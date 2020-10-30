@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "nx-plugin-openapi",
+  "version": "0.0.1",
+  "schematics": {
+    "api-spec": {
+      "factory": "./src/schematics/api-spec/schematic",
+      "schema": "./src/schematics/api-spec/schema.json",
+      "description": "Description in collection.json"
+    }
+  }
+}
