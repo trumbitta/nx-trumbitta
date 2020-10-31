@@ -17,6 +17,8 @@ import {
   toFileName,
   updateWorkspace,
 } from '@nrwl/workspace';
+
+import init from '../init/schematic';
 import { ApiSpecSchematicSchema } from './schema';
 
 /**
@@ -68,6 +70,7 @@ function addFiles(options: NormalizedSchema): Rule {
 export default function (options: ApiSpecSchematicSchema): Rule {
   const normalizedOptions = normalizeOptions(options);
   return chain([
+    init(),
     updateWorkspace((workspace) => {
       workspace.projects
         .add({

@@ -20,7 +20,7 @@ describe('api-spec e2e', () => {
     expect(result.stdout).toContain('Builder ran');
 
     done();
-  });
+  }, 30000);
 
   describe('--directory', () => {
     it('should create src in the specified directory', async (done) => {
@@ -36,7 +36,7 @@ describe('api-spec e2e', () => {
         checkFilesExist(`libs/subdir/${plugin}/src/${plugin}.openapi.yml`)
       ).not.toThrow();
       done();
-    });
+    }, 30000);
   });
 
   describe('--tags', () => {
@@ -52,6 +52,6 @@ describe('api-spec e2e', () => {
       const nxJson = readJson('nx.json');
       expect(nxJson.projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);
       done();
-    });
+    }, 30000);
   });
 });
