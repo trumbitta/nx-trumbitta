@@ -29,9 +29,9 @@ describe('api-lib schematic', () => {
         `libs/${options.name}`
       );
       expect(
-        workspaceJson.projects[options.name].architect.build
+        workspaceJson.projects[options.name].architect['generate-sources']
       ).toMatchObject({
-        builder: '@trumbitta/api-lib:build',
+        builder: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
         options: {
           generator: options.openapitoolsGenerator,
         },

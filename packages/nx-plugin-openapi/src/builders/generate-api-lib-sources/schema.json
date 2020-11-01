@@ -4,6 +4,10 @@
   "title": "GenerateApiLibSources builder",
   "description": "",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "generator": {
+      "type": "string"
+    }
+  },
   "required": []
 }

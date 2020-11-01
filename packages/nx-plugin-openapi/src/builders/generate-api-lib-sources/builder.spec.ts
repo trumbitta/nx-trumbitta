@@ -4,7 +4,9 @@ import { schema } from '@angular-devkit/core';
 import { join } from 'path';
 import { GenerateApiLibSourcesBuilderSchema } from './schema';
 
-const options: GenerateApiLibSourcesBuilderSchema = {};
+const options: GenerateApiLibSourcesBuilderSchema = {
+  generator: 'typescript-fetch',
+};
 
 describe('Command Runner Builder', () => {
   let architect: Architect;
@@ -13,7 +15,7 @@ describe('Command Runner Builder', () => {
   beforeEach(async () => {
     const registry = new schema.CoreSchemaRegistry();
     registry.addPostTransform(schema.transforms.addUndefinedDefaults);
-    
+
     architectHost = new TestingArchitectHost('/root', '/root');
     architect = new Architect(architectHost, registry);
 
@@ -24,7 +26,10 @@ describe('Command Runner Builder', () => {
 
   it('can run', async () => {
     // A "run" can have multiple outputs, and contains progress information.
-    const run = await architect.scheduleBuilder('@trumbitta/nx-plugin-openapi:generate-api-lib-sources', options);
+    const run = await architect.scheduleBuilder(
+      '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
+      options
+    );
     // The "result" member (of type BuilderOutput) is the next output.
     const output = await run.result;
 

@@ -76,7 +76,7 @@ export default function (options: ApiLibSchematicSchema): Rule {
           projectType,
         })
         .targets.add({
-          name: 'build',
+          name: 'generate-sources',
           builder: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
           options: {
             generator: options.openapitoolsGenerator,

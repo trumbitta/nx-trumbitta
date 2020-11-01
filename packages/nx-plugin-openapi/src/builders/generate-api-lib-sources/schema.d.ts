@@ -1,3 +1,5 @@
 import { JsonObject } from '@angular-devkit/core';
 
-export interface GenerateApiLibSourcesBuilderSchema extends JsonObject {} // eslint-disable-line
+export interface GenerateApiLibSourcesBuilderSchema extends JsonObject {
+  generator: string;
+} // eslint-disable-line
