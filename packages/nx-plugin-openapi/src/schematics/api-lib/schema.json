@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "api-lib",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the project (used for linting)",
+      "alias": "t"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the project is placed",
+      "alias": "d"
+    },
+    "sourceSpecLib": {
+      "type": "string",
+      "description": "The workspace lib where the source OpenAPI spec file is located",
+      "alias": "l"
+    },
+    "sourceSpecFileRelativePath": {
+      "type": "string",
+      "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project",
+      "alias": "f"
+    },
+    "openapitoolsGenerator": {
+      "type": "string",
+      "description": "The generator this lib will use to build an API SDK (e.g.: typescript-fetch)",
+      "alias": "g"
+    }
+  },
+  "required": [
+    "name",
+    "sourceSpecLib",
+    "sourceSpecFileRelativePath",
+    "openapitoolsGenerator"
+  ]
+}

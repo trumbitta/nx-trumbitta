@@ -5,6 +5,11 @@
       "implementation": "./src/builders/build/builder",
       "schema": "./src/builders/build/schema.json",
       "description": "build builder"
+    },
+    "generate-api-lib-sources": {
+      "implementation": "./src/builders/generate-api-lib-sources/builder",
+      "schema": "./src/builders/generate-api-lib-sources/schema.json",
+      "description": "Generate API lib source files via @openapitools/openapi-generator-cli"
     }
   }
 }
