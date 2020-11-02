@@ -80,6 +80,8 @@ export default function (options: ApiLibSchematicSchema): Rule {
           builder: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
           options: {
             generator: options.openapitoolsGenerator,
+            sourceSpecLib: options.sourceSpecLib,
+            sourceSpecFileRelativePath: options.sourceSpecFileRelativePath,
           },
         });
     }),
