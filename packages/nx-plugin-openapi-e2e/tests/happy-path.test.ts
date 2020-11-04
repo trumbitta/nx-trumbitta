@@ -32,5 +32,5 @@ fdescribe('happy-path e2e', () => {
 
     expect(true).toBe(true);
     done();
-  }, 60000);
+  }, 90000);
 });
