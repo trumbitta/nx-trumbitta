@@ -1,8 +1,14 @@
+// Devkit
 import { Tree } from '@angular-devkit/schematics';
+
+// Nrwl
 import { NxJson, readJsonInTree } from '@nrwl/workspace';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 
+// Utils
 import { runSchematic } from '../../utils/testing';
+
+// Schema
 import { ApiSpecSchematicSchema } from './schema';
 
 describe('api-spec schematic', () => {
@@ -18,9 +24,7 @@ describe('api-spec schematic', () => {
       const tree = await runSchematic('api-spec', options, appTree);
       const workspaceJson = readJsonInTree(tree, '/workspace.json');
 
-      expect(workspaceJson.projects[options.name].root).toEqual(
-        `libs/${options.name}`
-      );
+      expect(workspaceJson.projects[options.name].root).toEqual(`libs/${options.name}`);
     });
 
     it('should update nx.json', async () => {

@@ -1,10 +1,14 @@
+// Devkit
 import { Tree } from '@angular-devkit/schematics';
-import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
+
+// Nrwl
 import { NxJson, readJsonInTree } from '@nrwl/workspace';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
-import { join } from 'path';
+
+// Utils
 import { runSchematic } from '../../utils/testing';
 
+// Schema
 import { ApiLibSchematicSchema } from './schema';
 
 describe('api-lib schematic', () => {
@@ -25,12 +29,8 @@ describe('api-lib schematic', () => {
       const tree = await runSchematic('api-lib', options, appTree);
       const workspaceJson = readJsonInTree(tree, '/workspace.json');
 
-      expect(workspaceJson.projects[options.name].root).toEqual(
-        `libs/${options.name}`
-      );
-      expect(
-        workspaceJson.projects[options.name].architect['generate-sources']
-      ).toMatchObject({
+      expect(workspaceJson.projects[options.name].root).toEqual(`libs/${options.name}`);
+      expect(workspaceJson.projects[options.name].architect['generate-sources']).toMatchObject({
         builder: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
         options: {
           generator: options.openapitoolsGenerator,

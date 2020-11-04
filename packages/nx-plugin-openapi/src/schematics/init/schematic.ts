@@ -1,6 +1,10 @@
+// Devkit
 import { chain } from '@angular-devkit/schematics';
+
+// Nrwl
 import { addDepsToPackageJson } from '@nrwl/workspace';
 
+// Utils
 import { openapiGeneratorCliVersion } from '../../utils/versions';
 
 export default function () {
@@ -9,7 +13,7 @@ export default function () {
       {},
       {
         '@openapitools/openapi-generator-cli': openapiGeneratorCliVersion,
-      }
+      },
     ),
   ]);
 }

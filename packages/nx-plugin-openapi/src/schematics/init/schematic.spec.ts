@@ -1,8 +1,14 @@
+// Devkit
 import { Tree } from '@angular-devkit/schematics';
+
+// Nrwl
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { readJsonInTree } from '@nrwl/workspace';
 
+// Utils
 import { runSchematic } from '../../utils/testing';
+
+// Schema
 import { InitSchematicSchema } from './schema';
 
 describe('init schematic', () => {

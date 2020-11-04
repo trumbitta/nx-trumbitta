@@ -1,21 +1,11 @@
-import {
-  checkFilesExist,
-  ensureNxProject,
-  readJson,
-  runNxCommandAsync,
-  uniq,
-} from '@nrwl/nx-plugin/testing';
+// Nrwl
+import { ensureNxProject, runNxCommandAsync } from '@nrwl/nx-plugin/testing';
 
-fdescribe('happy-path e2e', () => {
+describe('happy-path e2e', () => {
   it('should work', async (done) => {
-    ensureNxProject(
-      '@trumbitta/nx-plugin-openapi',
-      'dist/packages/nx-plugin-openapi'
-    );
+    ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
-    await runNxCommandAsync(
-      `generate @trumbitta/nx-plugin-openapi:api-spec api-spec`
-    );
+    await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec`);
 
     await runNxCommandAsync(
       [
@@ -25,7 +15,7 @@ fdescribe('happy-path e2e', () => {
         '--openapitoolsGenerator=typescript-fetch',
         '--sourceSpecLib=api-spec',
         '--sourceSpecFileRelativePath=src/api-spec.openapi.yml',
-      ].join(' ')
+      ].join(' '),
     );
 
     await runNxCommandAsync(`run api-lib:generate-sources`);

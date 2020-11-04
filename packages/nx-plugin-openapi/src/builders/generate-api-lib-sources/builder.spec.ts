@@ -1,11 +1,18 @@
+// Devkit
 import { Architect } from '@angular-devkit/architect';
 import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { schema } from '@angular-devkit/core';
+
+// Third Parties
 import { join } from 'path';
+
+// Schema
 import { GenerateApiLibSourcesBuilderSchema } from './schema';
 
 const options: GenerateApiLibSourcesBuilderSchema = {
   generator: 'typescript-fetch',
+  sourceSpecFileRelativePath: 'foo',
+  sourceSpecLib: 'bar',
 };
 
 describe('Command Runner Builder', () => {
@@ -26,10 +33,7 @@ describe('Command Runner Builder', () => {
 
   it('can run', async () => {
     // A "run" can have multiple outputs, and contains progress information.
-    const run = await architect.scheduleBuilder(
-      '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
-      options
-    );
+    const run = await architect.scheduleBuilder('@trumbitta/nx-plugin-openapi:generate-api-lib-sources', options);
     // The "result" member (of type BuilderOutput) is the next output.
     const output = await run.result;
 

@@ -1,12 +1,7 @@
-import {
-  apply,
-  applyTemplates,
-  chain,
-  mergeWith,
-  move,
-  Rule,
-  url,
-} from '@angular-devkit/schematics';
+// Devkit
+import { apply, applyTemplates, chain, mergeWith, move, Rule, url } from '@angular-devkit/schematics';
+
+// Nrwl
 import {
   addProjectToNxJsonInTree,
   names,
@@ -17,6 +12,7 @@ import {
   updateWorkspace,
 } from '@nrwl/workspace';
 
+// Schema
 import { ApiLibSchematicSchema } from './schema';
 
 /**
@@ -33,14 +29,10 @@ interface NormalizedSchema extends ApiLibSchematicSchema {
 
 function normalizeOptions(options: ApiLibSchematicSchema): NormalizedSchema {
   const name = toFileName(options.name);
-  const projectDirectory = options.directory
-    ? `${toFileName(options.directory)}/${name}`
-    : name;
+  const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
   const projectRoot = `${projectRootDir(projectType)}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
+  const parsedTags = options.tags ? options.tags.split(',').map((s) => s.trim()) : [];
 
   return {
     ...options,
@@ -60,7 +52,7 @@ function addFiles(options: NormalizedSchema): Rule {
         offsetFromRoot: offsetFromRoot(options.projectRoot),
       }),
       move(options.projectRoot),
-    ])
+    ]),
   );
 }
 
