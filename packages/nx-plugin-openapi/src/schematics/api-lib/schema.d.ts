@@ -4,5 +4,5 @@ export interface ApiLibSchematicSchema {
   directory?: string;
   sourceSpecLib: string;
   sourceSpecFileRelativePath: string;
-  openapitoolsGenerator: string;
+  generator: string;
 }

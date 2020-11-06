@@ -5,14 +5,14 @@ describe('happy-path e2e', () => {
   it('should work', async (done) => {
     ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
-    await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec`);
+    await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
 
     await runNxCommandAsync(
       [
         'generate',
         '@trumbitta/nx-plugin-openapi:api-lib',
         'api-lib',
-        '--openapitoolsGenerator=typescript-fetch',
+        '--generator=typescript-fetch',
         '--sourceSpecLib=api-spec',
         '--sourceSpecFileRelativePath=src/api-spec.openapi.yml',
       ].join(' '),

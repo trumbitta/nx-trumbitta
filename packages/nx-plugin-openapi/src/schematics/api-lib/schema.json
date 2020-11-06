@@ -11,7 +11,8 @@
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "What name would you like to use?",
+      "pattern": "^[a-zA-Z]{1}.*$"
     },
     "tags": {
       "type": "string",
@@ -26,23 +27,24 @@
     "sourceSpecLib": {
       "type": "string",
       "description": "The workspace lib where the source OpenAPI spec file is located",
-      "alias": "l"
+      "alias": "l",
+      "x-prompt": "What's the name of the lib containing the API spec file?",
+      "default": "api-spec"
     },
     "sourceSpecFileRelativePath": {
       "type": "string",
       "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project",
-      "alias": "f"
+      "alias": "f",
+      "x-prompt": "What's the path of the API spec file, starting from the lib root?",
+      "default": "src/api-spec.openapi.yml"
     },
-    "openapitoolsGenerator": {
+    "generator": {
       "type": "string",
       "description": "The generator this lib will use to build an API SDK (e.g.: typescript-fetch)",
-      "alias": "g"
+      "alias": "g",
+      "x-prompt": "Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator)",
+      "default": "typescript-fetch"
     }
   },
-  "required": [
-    "name",
-    "sourceSpecLib",
-    "sourceSpecFileRelativePath",
-    "openapitoolsGenerator"
-  ]
+  "required": ["name", "sourceSpecLib", "sourceSpecFileRelativePath", "generator"]
 }

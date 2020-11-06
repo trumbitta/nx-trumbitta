@@ -58,6 +58,7 @@ function addFiles(options: NormalizedSchema): Rule {
 
 export default function (options: ApiLibSchematicSchema): Rule {
   const normalizedOptions = normalizeOptions(options);
+  const { generator, sourceSpecLib, sourceSpecFileRelativePath } = options;
   return chain([
     updateWorkspace((workspace) => {
       workspace.projects
@@ -71,9 +72,9 @@ export default function (options: ApiLibSchematicSchema): Rule {
           name: 'generate-sources',
           builder: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
           options: {
-            generator: options.openapitoolsGenerator,
-            sourceSpecLib: options.sourceSpecLib,
-            sourceSpecFileRelativePath: options.sourceSpecFileRelativePath,
+            generator,
+            sourceSpecLib,
+            sourceSpecFileRelativePath,
           },
         });
     }),

@@ -11,7 +11,8 @@
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "What name would you like to use?",
+      "pattern": "^[a-zA-Z]{1}.*$"
     },
     "tags": {
       "type": "string",
@@ -22,6 +23,12 @@
       "type": "string",
       "description": "A directory where the project is placed",
       "alias": "d"
+    },
+    "withSample": {
+      "type": "boolean",
+      "description": "Also create a sample spec file",
+      "x-prompt": "Do you want a sample spec file?",
+      "default": false
     }
   },
   "required": ["name"]

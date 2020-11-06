@@ -17,7 +17,7 @@ describe('api-lib schematic', () => {
     name: 'test',
     sourceSpecLib: 'foo',
     sourceSpecFileRelativePath: 'src/bar.yml',
-    openapitoolsGenerator: 'typescript-fetch',
+    generator: 'typescript-fetch',
   };
 
   beforeEach(() => {
@@ -33,7 +33,7 @@ describe('api-lib schematic', () => {
       expect(workspaceJson.projects[options.name].architect['generate-sources']).toMatchObject({
         builder: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
         options: {
-          generator: options.openapitoolsGenerator,
+          generator: options.generator,
         },
       });
     });

@@ -63,7 +63,7 @@ function addFiles(options: NormalizedSchema): Rule {
 
 export default function (options: ApiSpecSchematicSchema): Rule {
   const normalizedOptions = normalizeOptions(options);
-  return chain([
+  const operations = [
     init(),
     updateWorkspace((workspace) => {
       workspace.projects
@@ -81,6 +81,11 @@ export default function (options: ApiSpecSchematicSchema): Rule {
     addProjectToNxJsonInTree(normalizedOptions.projectName, {
       tags: normalizedOptions.parsedTags,
     }),
-    addFiles(normalizedOptions),
-  ]);
+  ];
+
+  if (options.withSample) {
+    operations.push(addFiles(normalizedOptions));
+  }
+
+  return chain(operations);
 }
