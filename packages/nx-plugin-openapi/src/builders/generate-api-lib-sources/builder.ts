@@ -39,7 +39,7 @@ export function runBuilder(
     }
   }).pipe(
     switchMap(() =>
-      from(generateSources(apiSpecPath, options.generator, outputDir)).pipe(
+      from(generateSources(apiSpecPath, options.generator, options.additionalProperties, outputDir)).pipe(
         map(() => ({ success: true })),
         catchError((error) => {
           context.logger.error(error);
@@ -51,7 +51,13 @@ export function runBuilder(
   );
 }
 
-function generateSources(apiSpecPath: string, generator: string, outputDir: string): Promise<number> {
+function generateSources(
+  apiSpecPath: string,
+  generator: string,
+  additionalProperties: string,
+  outputDir: string,
+): Promise<number> {
+  console.log('###################', additionalProperties);
   return new Promise((resolve, reject) => {
     const cp = fork('node_modules/.bin/openapi-generator-cli', [
       'generate',
@@ -59,6 +65,8 @@ function generateSources(apiSpecPath: string, generator: string, outputDir: stri
       apiSpecPath,
       '-g',
       generator,
+      '--additional-properties',
+      additionalProperties,
       '-o',
       outputDir,
     ]);

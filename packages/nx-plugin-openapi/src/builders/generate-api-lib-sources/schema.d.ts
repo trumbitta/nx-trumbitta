@@ -4,4 +4,5 @@ export interface GenerateApiLibSourcesBuilderSchema extends JsonObject {
   generator: string;
   sourceSpecLib: string;
   sourceSpecFileRelativePath: string;
-} // eslint-disable-line
+  additionalProperties?: string;
+}

@@ -2,13 +2,17 @@
   "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "https://json-schema.org/draft-07/schema",
   "title": "GenerateApiLibSources builder",
-  "description": "",
+  "description": "Generate API lib source files via @openapitools/openapi-generator-cli",
   "type": "object",
   "properties": {
     "generator": {
       "type": "string",
-      "description": "The openapitools generator you want to use",
+      "description": "The OpenAPITools generator you want to use",
       "default": "typescript-fetch"
+    },
+    "additionalProperties": {
+      "type": "string",
+      "description": "The additional properties you want to pass to the generator"
     },
     "sourceSpecLib": {
       "type": "string",

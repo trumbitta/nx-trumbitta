@@ -14,12 +14,12 @@
     "api-spec": {
       "factory": "./src/schematics/api-spec/schematic",
       "schema": "./src/schematics/api-spec/schema.json",
-      "description": "Generate a lib with a sample OpenAPI specification file"
+      "description": "Create a lib for an OpenAPI specification file"
     },
     "api-lib": {
       "factory": "./src/schematics/api-lib/schematic",
       "schema": "./src/schematics/api-lib/schema.json",
-      "description": "Generate a API lib from an OpenAPI specification file"
+      "description": "Create a lib to generate sources from an OpenAPI specification file"
     }
   }
 }

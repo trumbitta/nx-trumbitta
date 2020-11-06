@@ -66,17 +66,12 @@ export default function (options: ApiSpecSchematicSchema): Rule {
   const operations = [
     init(),
     updateWorkspace((workspace) => {
-      workspace.projects
-        .add({
-          name: normalizedOptions.projectName,
-          root: normalizedOptions.projectRoot,
-          sourceRoot: `${normalizedOptions.projectRoot}/src`,
-          projectType,
-        })
-        .targets.add({
-          name: 'build',
-          builder: '@trumbitta/nx-plugin-openapi:build',
-        });
+      workspace.projects.add({
+        name: normalizedOptions.projectName,
+        root: normalizedOptions.projectRoot,
+        sourceRoot: `${normalizedOptions.projectRoot}/src`,
+        projectType,
+      });
     }),
     addProjectToNxJsonInTree(normalizedOptions.projectName, {
       tags: normalizedOptions.parsedTags,

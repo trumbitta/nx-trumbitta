@@ -58,7 +58,7 @@ function addFiles(options: NormalizedSchema): Rule {
 
 export default function (options: ApiLibSchematicSchema): Rule {
   const normalizedOptions = normalizeOptions(options);
-  const { generator, sourceSpecLib, sourceSpecFileRelativePath } = options;
+  const { generator, sourceSpecLib, sourceSpecFileRelativePath, additionalProperties } = options;
   return chain([
     updateWorkspace((workspace) => {
       workspace.projects
@@ -75,6 +75,7 @@ export default function (options: ApiLibSchematicSchema): Rule {
             generator,
             sourceSpecLib,
             sourceSpecFileRelativePath,
+            additionalProperties,
           },
         });
     }),

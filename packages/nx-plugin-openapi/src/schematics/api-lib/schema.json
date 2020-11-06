@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "id": "api-lib",
-  "title": "",
+  "title": "Create a lib to generate sources from an OpenAPI specification file",
   "type": "object",
   "properties": {
     "name": {
@@ -44,6 +44,12 @@
       "alias": "g",
       "x-prompt": "Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator)",
       "default": "typescript-fetch"
+    },
+    "additionalProperties": {
+      "type": "string",
+      "description": "Additional properties for the generator",
+      "x-prompt": "Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators)",
+      "pattern": "^(\\w=\\w)(,\\w=\\w)*$"
     }
   },
   "required": ["name", "sourceSpecLib", "sourceSpecFileRelativePath", "generator"]
