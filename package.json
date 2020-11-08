@@ -1,6 +1,6 @@
 {
   "name": "trumbitta",
-  "version": "0.0.0",
+  "version": "0.0.0-semantically-released",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -23,11 +23,14 @@
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@nrwl/cli": "10.3.1",
     "@nrwl/eslint-plugin-nx": "10.3.1",
     "@nrwl/jest": "10.3.1",
@@ -38,14 +41,34 @@
     "@types/node": "~8.9.4",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
+    "husky": "^4.3.0",
     "jest": "26.2.2",
     "prettier": "2.0.4",
+    "semantic-release": "^17.2.2",
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trumbitta/nx-trumbitta.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
