@@ -57,19 +57,15 @@ function generateSources(
   additionalProperties: string,
   outputDir: string,
 ): Promise<number> {
-  console.log('###################', additionalProperties);
   return new Promise((resolve, reject) => {
-    const cp = fork('node_modules/.bin/openapi-generator-cli', [
-      'generate',
-      '-i',
-      apiSpecPath,
-      '-g',
-      generator,
-      '--additional-properties',
-      additionalProperties,
-      '-o',
-      outputDir,
-    ]);
+    const args = ['generate', '-i', apiSpecPath, '-g', generator, '-o', outputDir];
+
+    if (additionalProperties) {
+      args.push(...['--additional-properties', additionalProperties]);
+    }
+
+    const cp = fork('node_modules/.bin/openapi-generator-cli', args);
+
     cp.on('error', (err) => {
       reject(err);
     });
