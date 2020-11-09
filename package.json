@@ -37,6 +37,7 @@
     "@nrwl/nx-cloud": "latest",
     "@nrwl/nx-plugin": "^10.3.1",
     "@nrwl/workspace": "10.3.1",
+    "@octokit/core": "^3.2.1",
     "@types/jest": "26.0.8",
     "@types/node": "~8.9.4",
     "@typescript-eslint/eslint-plugin": "4.3.0",
@@ -53,6 +54,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~4.0.3"
+  },
+  "peerDependencies": {
+    "@octokit/core": "^3.2.1"
   },
   "repository": {
     "type": "git",
