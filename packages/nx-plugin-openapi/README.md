@@ -90,6 +90,6 @@ Find the ones you need, togethere with all the additional properties available f
 
 Many thanks to every project and every person I took inspiration from, but especially:
 
-- @vsavkin for [@nrwl/react](https://github.com/nrwl/nx/tree/master/packages/react)
-- @ericwooley for [his own @ericwooley/openapi-sdk](https://github.com/ericwooley/openapi-sdk)
-- @tinesoft for inspiring me to take Nx plugin development for a spin with the release of their [@nxrocks/nx-spring-boot](https://github.com/tinesoft/nxrocks)
+- [@vsavkin](https://github.com/vsavkin) for [@nrwl/react](https://github.com/nrwl/nx/tree/master/packages/react)
+- [@ericwooley](https://github.com/ericwooley) for [his own @ericwooley/openapi-sdk](https://github.com/ericwooley/openapi-sdk)
+- [@tinesoft](https://github.com/tinesoft) for inspiring me to take Nx plugin development for a spin with the release of their [@nxrocks/nx-spring-boot](https://github.com/tinesoft/nxrocks)
