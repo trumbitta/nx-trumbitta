@@ -5,5 +5,5 @@ export interface ApiLibSchematicSchema {
   sourceSpecLib: string;
   sourceSpecFileRelativePath: string;
   generator: string;
-  additionalProperties: string;
+  additionalProperties?: string;
 }
