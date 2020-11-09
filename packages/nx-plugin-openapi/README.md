@@ -86,7 +86,7 @@ This OpenAPI plugin for Nx should support any generator you can use with `openap
 
 Find the ones you need, togethere with all the additional properties available for each, here: https://openapi-generator.tech/docs/generators
 
-## Acknowledgements
+## 🙏 Acknowledgements
 
 Many thanks to every project and every person I took inspiration from, but especially:
 
