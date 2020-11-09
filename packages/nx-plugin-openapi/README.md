@@ -85,3 +85,11 @@ nx run api-fetch:generate-sources
 This OpenAPI plugin for Nx should support any generator you can use with `openapi-generator-cli`.
 
 Find the ones you need, togethere with all the additional properties available for each, here: https://openapi-generator.tech/docs/generators
+
+## Acknowledgements
+
+Many thanks to every project and every person I took inspiration from, but especially:
+
+- @vsavkin for [@nrwl/react](https://github.com/nrwl/nx/tree/master/packages/react)
+- @ericwooley for [his own @ericwooley/openapi-sdk](https://github.com/ericwooley/openapi-sdk)
+- @tinesoft for inspiring me to take Nx plugin development for a spin with the release of their [@nxrocks/nx-spring-boot](https://github.com/tinesoft/nxrocks)
