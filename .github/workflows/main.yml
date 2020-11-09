@@ -1,36 +1,25 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
+name: Nx Affected CI
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches: [main]
 jobs:
-  # This workflow contains a single job called "build"
-  test:
-    # The type of runner that the job will run on
+  build:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: Use Node.js 12
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12
-
-      - name: npm install
-        run: npm install
-
-      - name: Test affected
+          node-version: ${{ matrix.node-version }}
+      - run: git fetch origin main
+      - run: npm install
+      - name: Run Affected Tests
+        shell: bash
         run: |
-          node_modules/.bin/nx affected:test
-          node_modules/.bin/nx affected:e2e
+          npm run affected:test -- --base=remotes/origin/main
+          npm run affected:e2e -- --base=remotes/origin/main
