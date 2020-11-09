@@ -15,9 +15,6 @@ import {
 // Schema
 import { ApiLibSchematicSchema } from './schema';
 
-/**
- * Depending on your needs, you can change this to either `Library` or `Application`
- */
 const projectType = ProjectType.Library;
 
 interface NormalizedSchema extends ApiLibSchematicSchema {
