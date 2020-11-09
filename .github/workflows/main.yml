@@ -31,19 +31,6 @@ jobs:
         run: npm install
 
       - name: Test affected
-        # You may pin to the exact commit or the version.
-        # uses: MansaGroup/nrwl-nx-action@0bd602b44260ea0a634b26dc6e224285769c8937
-        uses: MansaGroup/nrwl-nx-action@v1.0.1
-        with:
-          # Comma-separated list of targets to execute
-          targets: test, e2e
-          # Comma-separated list of projects to use
-          # projects: 
-          # Run the targets on all projects
-          # all: # optional, default is false
-          # Use the Nx' affected subcommand to only process affected projects
-          # affected: # optional, default is true
-          # Run the tasks in parallel (can be expensive)
-          # parallel: # optional, default is false
-          # Optional arguments to append to the Nx command
-          # args: # optional, default is 
+        run: |
+          nx affected:test
+          nx affected:e2e
