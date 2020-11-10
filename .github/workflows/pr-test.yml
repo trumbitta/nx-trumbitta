@@ -1,10 +1,9 @@
-name: Nx tag and release
+name: Nx Affected Test CI
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    branches: [main]
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,6 +18,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: git fetch origin main
       - run: npm ci
-      - name: Release
+      - name: Run Affected Tests
         shell: bash
-        run: npx semantic-release
+        run: |
+          npm run affected:test -- --base=remotes/origin/main
+          npm run affected:e2e -- --base=remotes/origin/main
