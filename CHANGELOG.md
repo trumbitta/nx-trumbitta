@@ -1,3 +1,10 @@
+### [1.0.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.0.0...v1.0.1) (2020-11-10)
+
+
+### Bug Fixes
+
+* **nx-plugin-openapi:** fix licensing and peer dependencies ([bb09067](https://github.com/trumbitta/nx-trumbitta/commit/bb090672622cdbf16cd13a8f9c06c4d1699563a8))
+
 ## 1.0.0 (2020-11-10)
 
 
