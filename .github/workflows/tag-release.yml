@@ -1,4 +1,4 @@
-name: Nx tag and release
+name: Tag and release
 on:
   push:
     branches:

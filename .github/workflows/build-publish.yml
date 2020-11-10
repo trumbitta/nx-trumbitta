@@ -1,0 +1,25 @@
+# name: Build and publish
+# on:
+#   push:
+#     tags:
+#       - '*'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [12.x]
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - run: npm ci
+#       - name: Determine previous tag
+#         run: node tools/scripts/determine-previous-tag.js
+#       - name: Build
+#         shell: bash
+#         run: npm run affected:build -- --prod --base=`cat dist/.previous-tag`

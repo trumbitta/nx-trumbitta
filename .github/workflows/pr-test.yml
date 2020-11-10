@@ -1,4 +1,4 @@
-name: Nx Affected Test CI
+name: PR Test
 on:
   pull_request:
     branches: [main]
