@@ -82,6 +82,9 @@
     }
   },
   "release": {
+    "branches": [
+      "main"
+    ],
     "npmPublish": false,
     "pkgRoot": "dist/$npm_package_name",
     "verifyConditions": [
