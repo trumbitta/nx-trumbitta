@@ -24,19 +24,32 @@
       "description": "A directory where the project is placed",
       "alias": "d"
     },
+    "isRemoteSpec": {
+      "type": "boolean",
+      "description": "",
+      "alias": "r"
+    },
+    "sourceSpecUrl": {
+      "type": "string",
+      "description": "",
+      "alias": "u"
+    },
+    "sourceSpecUrlAuthorizationHeaders": {
+      "type": "string",
+      "description": "",
+      "alias": "a"
+    },
     "sourceSpecLib": {
       "type": "string",
-      "description": "The workspace lib where the source OpenAPI spec file is located",
+      "description": "The workspace lib where the source OpenAPI spec file is located (Es: api-spec)",
       "alias": "l",
-      "x-prompt": "What's the name of the lib containing the API spec file?",
-      "default": "api-spec"
+      "x-prompt": "What's the name of the lib containing the API spec file?"
     },
     "sourceSpecFileRelativePath": {
       "type": "string",
-      "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project",
+      "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project (Es: src/api-spec.openapi.yml)",
       "alias": "f",
-      "x-prompt": "What's the path of the API spec file, starting from the lib root?",
-      "default": "src/api-spec.openapi.yml"
+      "x-prompt": "What's the path of the API spec file, starting from the lib root?"
     },
     "generator": {
       "type": "string",
@@ -52,5 +65,5 @@
       "default": ""
     }
   },
-  "required": ["name", "sourceSpecLib", "sourceSpecFileRelativePath", "generator"]
+  "required": ["name", "isRemoteSpec", "generator"]
 }
