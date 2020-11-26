@@ -27,29 +27,33 @@
     "isRemoteSpec": {
       "type": "boolean",
       "description": "",
-      "alias": "r"
+      "alias": "r",
+      "x-prompt": "Is the API spec file published online?",
+      "default": false
     },
     "sourceSpecUrl": {
       "type": "string",
       "description": "",
-      "alias": "u"
+      "alias": "u",
+      "x-prompt": "If it's online, what's the URL where I can get the API spec file from?"
     },
     "sourceSpecUrlAuthorizationHeaders": {
       "type": "string",
-      "description": "",
-      "alias": "a"
+      "description": "A URL-encoded string of name:header with a comma separating multiple values",
+      "alias": "a",
+      "x-prompt": "If it's online, which authorization headers do you need to add?"
     },
     "sourceSpecLib": {
       "type": "string",
       "description": "The workspace lib where the source OpenAPI spec file is located (Es: api-spec)",
       "alias": "l",
-      "x-prompt": "What's the name of the lib containing the API spec file?"
+      "x-prompt": "If it's local, what's the name of the lib containing the API spec file?"
     },
     "sourceSpecFileRelativePath": {
       "type": "string",
       "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project (Es: src/api-spec.openapi.yml)",
       "alias": "f",
-      "x-prompt": "What's the path of the API spec file, starting from the lib root?"
+      "x-prompt": "If it's local, what's the path of the API spec file starting from the lib root?"
     },
     "generator": {
       "type": "string",
@@ -65,5 +69,5 @@
       "default": ""
     }
   },
-  "required": ["name", "isRemoteSpec", "generator"]
+  "required": ["name", "generator"]
 }

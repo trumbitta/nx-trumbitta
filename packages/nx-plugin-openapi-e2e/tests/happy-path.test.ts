@@ -1,5 +1,6 @@
 // Nrwl
 import { ensureNxProject, runNxCommandAsync } from '@nrwl/nx-plugin/testing';
+import { projectRootDir, ProjectType } from '@nrwl/workspace';
 
 describe('happy-path e2e', () => {
   it('should work', async (done) => {
@@ -14,7 +15,7 @@ describe('happy-path e2e', () => {
         'api-lib',
         '--generator=typescript-fetch',
         '--sourceSpecLib=api-spec',
-        '--sourceSpecFileRelativePath=src/api-spec.openapi.yml',
+        `--sourceSpecFileRelativePath=src/api-spec.openapi.yml`,
       ].join(' '),
     );
 

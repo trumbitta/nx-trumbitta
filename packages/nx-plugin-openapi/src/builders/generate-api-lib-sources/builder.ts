@@ -22,13 +22,15 @@ export function runBuilder(
   context: BuilderContext,
 ): Observable<BuilderOutput> {
   const projectName = context.target.project;
-  const sourceSpecProjectRoot = readWorkspaceJson().projects[options.sourceSpecLib].root;
-  const apiSpecPath = `${sourceSpecProjectRoot}/${options.sourceSpecFileRelativePath}`;
+  const apiSpecPathOrUrl = options.sourceSpecFullPathOrUrl;
+  context.logger.info('WWWWOAAAAAA');
+  console.log(context.workspaceRoot);
+  console.log(readWorkspaceJson());
   const outputDir = readWorkspaceJson().projects[projectName].sourceRoot;
 
   return new Observable<BuilderOutput>((observer) => {
     try {
-      context.logger.info(`Deleting outputDir ${outputDir}..`);
+      context.logger.info(`Deleting outputDir ${outputDir}...`);
 
       deleteOutputDir(context.workspaceRoot, outputDir);
 
@@ -39,7 +41,15 @@ export function runBuilder(
     }
   }).pipe(
     switchMap(() =>
-      from(generateSources(apiSpecPath, options.generator, options.additionalProperties, outputDir)).pipe(
+      from(
+        generateSources(
+          apiSpecPathOrUrl,
+          options.sourceSpecUrlAuthorizationHeaders,
+          options.generator,
+          options.additionalProperties,
+          outputDir,
+        ),
+      ).pipe(
         map(() => ({ success: true })),
         catchError((error) => {
           context.logger.error(error);
@@ -52,16 +62,21 @@ export function runBuilder(
 }
 
 function generateSources(
-  apiSpecPath: string,
+  apiSpecPathOrUrl: string,
+  apiSpecAuthorizationHeaders: string,
   generator: string,
   additionalProperties: string,
   outputDir: string,
 ): Promise<number> {
   return new Promise((resolve, reject) => {
-    const args = ['generate', '-i', apiSpecPath, '-g', generator, '-o', outputDir];
+    const args = ['generate', '-i', apiSpecPathOrUrl, '-g', generator, '-o', outputDir];
 
     if (additionalProperties) {
       args.push(...['--additional-properties', additionalProperties]);
+    }
+
+    if (apiSpecAuthorizationHeaders) {
+      args.push(...['--auth', apiSpecAuthorizationHeaders]);
     }
 
     const cp = fork('node_modules/.bin/openapi-generator-cli', args);
