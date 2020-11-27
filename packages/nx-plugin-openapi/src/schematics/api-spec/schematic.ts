@@ -28,6 +28,30 @@ interface NormalizedSchema extends ApiSpecSchematicSchema {
   parsedTags: string[];
 }
 
+export default function (options: ApiSpecSchematicSchema): Rule {
+  const normalizedOptions = normalizeOptions(options);
+  const operations = [
+    init(),
+    updateWorkspace((workspace) => {
+      workspace.projects.add({
+        name: normalizedOptions.projectName,
+        root: normalizedOptions.projectRoot,
+        sourceRoot: `${normalizedOptions.projectRoot}/src`,
+        projectType,
+      });
+    }),
+    addProjectToNxJsonInTree(normalizedOptions.projectName, {
+      tags: normalizedOptions.parsedTags,
+    }),
+  ];
+
+  if (options.withSample) {
+    operations.push(addFiles(normalizedOptions));
+  }
+
+  return chain(operations);
+}
+
 function normalizeOptions(options: ApiSpecSchematicSchema): NormalizedSchema {
   const name = toFileName(options.name);
   const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name;
@@ -56,28 +80,4 @@ function addFiles(options: NormalizedSchema): Rule {
       move(options.projectRoot),
     ]),
   );
-}
-
-export default function (options: ApiSpecSchematicSchema): Rule {
-  const normalizedOptions = normalizeOptions(options);
-  const operations = [
-    init(),
-    updateWorkspace((workspace) => {
-      workspace.projects.add({
-        name: normalizedOptions.projectName,
-        root: normalizedOptions.projectRoot,
-        sourceRoot: `${normalizedOptions.projectRoot}/src`,
-        projectType,
-      });
-    }),
-    addProjectToNxJsonInTree(normalizedOptions.projectName, {
-      tags: normalizedOptions.parsedTags,
-    }),
-  ];
-
-  if (options.withSample) {
-    operations.push(addFiles(normalizedOptions));
-  }
-
-  return chain(operations);
 }

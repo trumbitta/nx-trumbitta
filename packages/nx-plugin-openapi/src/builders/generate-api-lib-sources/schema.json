@@ -14,13 +14,13 @@
       "type": "string",
       "description": "The additional properties you want to pass to the generator"
     },
-    "sourceSpecLib": {
+    "sourceSpecPathOrUrl": {
       "type": "string",
-      "description": "The workspace lib where the source OpenAPI spec file is located"
+      "description": "The path (relative to the workspace root) or URL where the source OpenAPI spec file is located at"
     },
-    "sourceSpecFileRelativePath": {
+    "sourceSpecUrlAuthorizationHeaders": {
       "type": "string",
-      "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project"
+      "description": "A URL-encoded string of name:header with a comma separating multiple values"
     }
   },
   "required": []

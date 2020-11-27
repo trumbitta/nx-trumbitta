@@ -1,3 +1,3 @@
 export const nxVersion = '*';
 
-export const openapiGeneratorCliVersion = '2.0.3';
+export const openapiGeneratorCliVersion = '2.1.7';
