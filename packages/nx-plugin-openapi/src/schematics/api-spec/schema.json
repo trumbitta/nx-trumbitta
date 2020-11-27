@@ -27,7 +27,7 @@
     "withSample": {
       "type": "boolean",
       "description": "Also create a sample spec file",
-      "x-prompt": "Do you want a sample spec file?",
+      "x-prompt": "Do you want me to also create a sample spec file for you?",
       "default": false
     }
   },

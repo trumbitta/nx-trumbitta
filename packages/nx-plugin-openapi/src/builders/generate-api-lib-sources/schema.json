@@ -16,7 +16,7 @@
     },
     "sourceSpecPathOrUrl": {
       "type": "string",
-      "description": "The full path or URL where the source OpenAPI spec file is located"
+      "description": "The path (relative to the workspace root) or URL where the source OpenAPI spec file is located at"
     },
     "sourceSpecUrlAuthorizationHeaders": {
       "type": "string",

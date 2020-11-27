@@ -45,7 +45,7 @@
     },
     "sourceSpecLib": {
       "type": "string",
-      "description": "The workspace lib where the source OpenAPI spec file is located (Es: api-spec)",
+      "description": "The workspace lib where the source OpenAPI spec file is located at (Es: api-spec)",
       "alias": "l",
       "x-prompt": "If it's local, what's the name of the lib containing the API spec file?"
     },
