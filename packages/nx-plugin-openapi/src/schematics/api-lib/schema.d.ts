@@ -1,5 +1,6 @@
 export interface ApiLibSchematicSchema {
   name: string;
+  generator?: string;
   tags?: string;
   directory?: string;
   isRemoteSpec: boolean;
@@ -7,6 +8,5 @@ export interface ApiLibSchematicSchema {
   sourceSpecUrlAuthorizationHeaders?: string;
   sourceSpecLib?: string;
   sourceSpecFileRelativePath?: string;
-  generator: string;
   additionalProperties?: string;
 }

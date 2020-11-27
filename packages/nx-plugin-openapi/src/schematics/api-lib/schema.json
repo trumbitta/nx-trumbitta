@@ -14,6 +14,13 @@
       "x-prompt": "What name would you like to use?",
       "pattern": "^[a-zA-Z]{1}.*$"
     },
+    "generator": {
+      "type": "string",
+      "description": "The generator this lib will use to build an API SDK (e.g.: typescript-fetch)",
+      "alias": "g",
+      "x-prompt": "Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator)",
+      "default": "typescript-fetch"
+    },
     "tags": {
       "type": "string",
       "description": "Add tags to the project (used for linting)",
@@ -33,7 +40,7 @@
     },
     "sourceSpecUrl": {
       "type": "string",
-      "description": "",
+      "description": "The URL of the remote API spec file (Ex: https://petstore.swagger.io/v2/swagger.json)",
       "alias": "u",
       "x-prompt": "If it's online, what's the URL where I can get the API spec file from?"
     },
@@ -45,22 +52,15 @@
     },
     "sourceSpecLib": {
       "type": "string",
-      "description": "The workspace lib where the source OpenAPI spec file is located at (Es: api-spec)",
+      "description": "The workspace lib where the source OpenAPI spec file is located at (Ex: api-spec)",
       "alias": "l",
       "x-prompt": "If it's local, what's the name of the lib containing the API spec file?"
     },
     "sourceSpecFileRelativePath": {
       "type": "string",
-      "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project (Es: src/api-spec.openapi.yml)",
+      "description": "The name of the source OpenAPI spec file, and its path relative to the root of the `sourceSpecLib` project (Ex: src/api-spec.openapi.yml)",
       "alias": "f",
       "x-prompt": "If it's local, what's the path of the API spec file starting from the lib root?"
-    },
-    "generator": {
-      "type": "string",
-      "description": "The generator this lib will use to build an API SDK (e.g.: typescript-fetch)",
-      "alias": "g",
-      "x-prompt": "Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator)",
-      "default": "typescript-fetch"
     },
     "additionalProperties": {
       "type": "string",
@@ -69,5 +69,5 @@
       "default": ""
     }
   },
-  "required": ["name", "generator"]
+  "required": ["name"]
 }
