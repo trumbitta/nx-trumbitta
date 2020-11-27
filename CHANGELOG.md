@@ -1,3 +1,17 @@
+## [1.1.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.0.1...v1.1.0) (2020-11-27)
+
+
+### Features
+
+* **nx-plugin-openapi:** (broken) add support for online API spec files ([0f6c6ee](https://github.com/trumbitta/nx-trumbitta/commit/0f6c6eea1033d36449240d84033b6152b1cc4555)), closes [#9](https://github.com/trumbitta/nx-trumbitta/issues/9)
+* **nx-plugin-openapi:** start adding new options ([7be0f12](https://github.com/trumbitta/nx-trumbitta/commit/7be0f12d9ec6f48e9a86d9c13a025d35b7dc2fce)), closes [#9](https://github.com/trumbitta/nx-trumbitta/issues/9)
+
+
+### Bug Fixes
+
+* **nx-plugin-openapi:** replace readWorkspaceJson with custom util function ([5f82a79](https://github.com/trumbitta/nx-trumbitta/commit/5f82a790213d59628c3b5285348989155d63219b)), closes [#9](https://github.com/trumbitta/nx-trumbitta/issues/9)
+* **nx-plugin-openapi:** somewhat workaround bogus behavior of Nx about a required prop with default ([9bd8605](https://github.com/trumbitta/nx-trumbitta/commit/9bd86055c1cc56b9a3f5235b6ab6aa0ff136cd2a)), closes [#9](https://github.com/trumbitta/nx-trumbitta/issues/9)
+
 ### [1.0.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.0.0...v1.0.1) (2020-11-10)
 
 
