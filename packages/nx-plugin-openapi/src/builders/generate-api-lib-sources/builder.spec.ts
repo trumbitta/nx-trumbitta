@@ -11,7 +11,7 @@ import { GenerateApiLibSourcesBuilderSchema } from './schema';
 
 const options: GenerateApiLibSourcesBuilderSchema = {
   generator: 'typescript-fetch',
-  sourceSpecFullPathOrUrl: ''
+  sourceSpecPathOrUrl: '',
 };
 
 // Disabling this until I figure out how to test it

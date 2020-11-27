@@ -12,6 +12,9 @@ import {
   updateWorkspace,
 } from '@nrwl/workspace';
 
+// Schematics
+import init from '../init/schematic';
+
 // Schemas
 import { ApiLibSchematicSchema } from './schema';
 import { GenerateApiLibSourcesBuilderSchema } from '../../builders/generate-api-lib-sources/schema';
@@ -39,7 +42,7 @@ export default function (options: ApiLibSchematicSchema): Rule {
 
   const builderOptions: GenerateApiLibSourcesBuilderSchema = {
     generator,
-    sourceSpecFullPathOrUrl: isRemoteSpec
+    sourceSpecPathOrUrl: isRemoteSpec
       ? sourceSpecUrl
       : [normalizedOptions.projectRootApiSpecLib, sourceSpecFileRelativePath].join('/'),
     additionalProperties,
@@ -50,6 +53,7 @@ export default function (options: ApiLibSchematicSchema): Rule {
   }
 
   const rules: Rule[] = [
+    init(),
     updateWorkspace((workspace) => {
       workspace.projects
         .add({

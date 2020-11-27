@@ -14,7 +14,7 @@
       "type": "string",
       "description": "The additional properties you want to pass to the generator"
     },
-    "sourceSpecFullPathOrUrl": {
+    "sourceSpecPathOrUrl": {
       "type": "string",
       "description": "The full path or URL where the source OpenAPI spec file is located"
     },

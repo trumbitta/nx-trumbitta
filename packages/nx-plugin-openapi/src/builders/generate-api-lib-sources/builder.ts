@@ -1,16 +1,14 @@
 // Devkit
 import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/architect';
 
-// Nrwl
-import { readWorkspaceJson } from '@nrwl/workspace';
-
 // Third Parties
 import { Observable, from, of } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { fork } from 'child_process';
 
 // Utils
 import { deleteOutputDir } from '../../utils/delete-output-dir';
+import { getProjectSourceRoot } from '../../utils/get-project-source-root';
 
 // Schema
 import { GenerateApiLibSourcesBuilderSchema } from './schema';
@@ -21,26 +19,17 @@ export function runBuilder(
   options: GenerateApiLibSourcesBuilderSchema,
   context: BuilderContext,
 ): Observable<BuilderOutput> {
-  const projectName = context.target.project;
-  const apiSpecPathOrUrl = options.sourceSpecFullPathOrUrl;
-  context.logger.info('WWWWOAAAAAA');
-  console.log(context.workspaceRoot);
-  console.log(readWorkspaceJson());
-  const outputDir = readWorkspaceJson().projects[projectName].sourceRoot;
+  const apiSpecPathOrUrl = options.sourceSpecPathOrUrl;
 
-  return new Observable<BuilderOutput>((observer) => {
-    try {
+  return from(getProjectSourceRoot(context)).pipe(
+    tap((outputDir) => {
       context.logger.info(`Deleting outputDir ${outputDir}...`);
 
       deleteOutputDir(context.workspaceRoot, outputDir);
 
       context.logger.info(`Done deleting outputDir ${outputDir}.`);
-      observer.next();
-    } catch (error) {
-      observer.error(error);
-    }
-  }).pipe(
-    switchMap(() =>
+    }),
+    switchMap((outputDir) =>
       from(
         generateSources(
           apiSpecPathOrUrl,
@@ -58,6 +47,7 @@ export function runBuilder(
         }),
       ),
     ),
+    catchError((error) => of(error)),
   );
 }
 

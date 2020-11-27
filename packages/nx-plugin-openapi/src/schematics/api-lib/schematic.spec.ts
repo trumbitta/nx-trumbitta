@@ -39,7 +39,7 @@ describe('api-lib schematic', () => {
       it('should update workspace.json', async () => {
         const options: GenerateApiLibSourcesBuilderSchema = {
           generator: apiLibOptions.generator,
-          sourceSpecFullPathOrUrl: sourceSpecUrl,
+          sourceSpecPathOrUrl: sourceSpecUrl,
         };
         const workspaceJson = readJsonInTree(tree, '/workspace.json');
 
@@ -79,7 +79,7 @@ describe('api-lib schematic', () => {
         const workspaceJson = readJsonInTree(tree, '/workspace.json');
         const options: GenerateApiLibSourcesBuilderSchema = {
           generator: apiLibOptions.generator,
-          sourceSpecFullPathOrUrl: [
+          sourceSpecPathOrUrl: [
             projectRootDir(ProjectType.Library),
             apiLibOptions.sourceSpecLib,
             apiLibOptions.sourceSpecFileRelativePath,
