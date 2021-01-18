@@ -1,3 +1,10 @@
+### [1.1.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.1.0...v1.1.1) (2021-01-18)
+
+
+### Bug Fixes
+
+* **nx-plugin-openapi:** update tsconfig import paths on api-lib creation ([0e5aade](https://github.com/trumbitta/nx-trumbitta/commit/0e5aade6db245d0cd8205d50226410f5a9416c6f)), closes [#14](https://github.com/trumbitta/nx-trumbitta/issues/14)
+
 ## [1.1.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.0.1...v1.1.0) (2020-11-27)
 
 
