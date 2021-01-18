@@ -3,6 +3,7 @@ export interface ApiLibSchematicSchema {
   generator?: string;
   tags?: string;
   directory?: string;
+  importPath?: string;
   isRemoteSpec: boolean;
   sourceSpecUrl?: string;
   sourceSpecUrlAuthorizationHeaders?: string;

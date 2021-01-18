@@ -31,6 +31,10 @@
       "description": "A directory where the project is placed",
       "alias": "d"
     },
+    "importPath": {
+      "type": "string",
+      "description": "The library name used to import it, like @myorg/my-awesome-lib"
+    },
     "isRemoteSpec": {
       "type": "boolean",
       "description": "",
