@@ -3,7 +3,7 @@ import { Tree } from '@angular-devkit/schematics';
 import { UnitTestTree } from '@angular-devkit/schematics/testing';
 
 // Nrwl
-import { NxJson, projectRootDir, ProjectType, readJsonInTree } from '@nrwl/workspace';
+import { NxJson, projectRootDir, ProjectType, readJsonInTree, updateJsonInTree } from '@nrwl/workspace';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 
 // Utils
@@ -26,6 +26,23 @@ describe('api-lib schematic', () => {
   });
 
   describe('not nested', () => {
+    it('should update tsconfig.base.json', async () => {
+      const tree = await runSchematic('lib', { name: 'myLib' }, appTree);
+      const tsconfigJson = readJsonInTree(tree, '/tsconfig.base.json');
+      expect(tsconfigJson.compilerOptions.paths['@proj/my-lib']).toEqual(['libs/my-lib/src/index.ts']);
+    });
+
+    it('should update root tsconfig.base.json (no existing path mappings)', async () => {
+      const updatedTree: any = updateJsonInTree('tsconfig.base.json', (json) => {
+        json.compilerOptions.paths = undefined;
+        return json;
+      })(appTree, null);
+
+      const tree = await runSchematic('lib', { name: 'myLib' }, updatedTree);
+      const tsconfigJson = readJsonInTree(tree, '/tsconfig.base.json');
+      expect(tsconfigJson.compilerOptions.paths['@proj/my-lib']).toEqual(['libs/my-lib/src/index.ts']);
+    });
+
     describe('When the API spec file is remote', () => {
       const sourceSpecUrl = 'http://foo.bar';
       let apiLibOptions: ApiLibSchematicSchema;
