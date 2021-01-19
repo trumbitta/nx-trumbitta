@@ -5,4 +5,5 @@ export interface GenerateApiLibSourcesBuilderSchema extends JsonObject {
   sourceSpecPathOrUrl: string;
   sourceSpecUrlAuthorizationHeaders?: string;
   additionalProperties?: string;
+  typeMappings?: string;
 }
