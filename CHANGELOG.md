@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.1.1...v1.2.0) (2021-01-19)
+
+
+### Features
+
+* **nx-plugin-openapi:** add support for typeMappings option ([598ccec](https://github.com/trumbitta/nx-trumbitta/commit/598ccec0f84ccc3c7fcbe17b7899f2204a07b27f)), closes [#16](https://github.com/trumbitta/nx-trumbitta/issues/16)
+
 ### [1.1.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.1.0...v1.1.1) (2021-01-18)
 
 
