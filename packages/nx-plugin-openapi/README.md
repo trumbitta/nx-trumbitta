@@ -5,6 +5,12 @@
 
 Keep your API spec files in libs, and auto-generate sources.
 
+## Warning
+
+The plugin works, but the README is a bit outdated until I find the time for issue #17.
+
+In the meantime, you can still make use of it if you adapt what you read to what you see on screen!
+
 ## 🧐 What is it?
 
 It's a plugin for organizing OpenAPI spec files in libraries. You can then have other libraries for API SDKs, server stubs, or documentation, all auto-generated from the spec files.
@@ -46,8 +52,8 @@ nx generate @trumbitta/nx-plugin-openapi:api-lib
 ? What name would you like to use? api-docs
 ? What's the name of the lib containing the API spec file? api-spec
 ? What's the path of the API spec file, starting from the lib root? src/api-spec.openapi.yml
-? Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) html  
-? Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators)
+? Which OpenAPITool generator would you like to use? (Info: https://github.com/OpenAPITools/openapi-generator) html
+? Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (Info: https://openapi-generator.tech/docs/generators)
 CREATE libs/api-docs/README.md (1236 bytes)
 UPDATE workspace.json (1220 bytes)
 UPDATE nx.json (837 bytes)
@@ -63,8 +69,8 @@ nx generate @trumbitta/nx-plugin-openapi:api-lib
 ? What name would you like to use? api-fetch
 ? What's the name of the lib containing the API spec file? api-spec
 ? What's the path of the API spec file, starting from the lib root? src/api-spec.openapi.yml
-? Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) typescript-fetch  
-? Do you want to specify any additional properties for the generator? 
+? Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) typescript-fetch
+? Do you want to specify any additional properties for the generator?
 key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) typescriptThreePlus=true,supportsES6=true
 CREATE libs/api-docs/README.md (1236 bytes)
 UPDATE workspace.json (1220 bytes)
