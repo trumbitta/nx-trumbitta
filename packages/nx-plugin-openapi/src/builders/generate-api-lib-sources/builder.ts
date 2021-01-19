@@ -36,6 +36,7 @@ export function runBuilder(
           options.sourceSpecUrlAuthorizationHeaders,
           options.generator,
           options.additionalProperties,
+          options.typeMappings,
           outputDir,
         ),
       ).pipe(
@@ -56,6 +57,7 @@ function generateSources(
   apiSpecAuthorizationHeaders: string,
   generator: string,
   additionalProperties: string,
+  typeMappings: string,
   outputDir: string,
 ): Promise<number> {
   return new Promise((resolve, reject) => {
@@ -67,6 +69,10 @@ function generateSources(
 
     if (apiSpecAuthorizationHeaders) {
       args.push(...['--auth', apiSpecAuthorizationHeaders]);
+    }
+
+    if (typeMappings) {
+      args.push(...['--type-mappings', typeMappings]);
     }
 
     const cp = fork('node_modules/.bin/openapi-generator-cli', args);
