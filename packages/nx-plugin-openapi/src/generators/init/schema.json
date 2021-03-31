@@ -1,5 +1,6 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
   "id": "init",
   "title": "Add Nx Plugin OpenAPI Schematics",
   "type": "object",

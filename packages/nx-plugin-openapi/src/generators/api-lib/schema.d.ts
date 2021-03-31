@@ -1,4 +1,4 @@
-export interface ApiLibSchematicSchema {
+export interface ApiLibGeneratorSchema {
   name: string;
   generator?: string;
   tags?: string;

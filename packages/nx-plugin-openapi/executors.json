@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "executors": {
+    "generate-api-lib-sources": {
+      "implementation": "./src/executors/generate-api-lib-sources/executor",
+      "schema": "./src/executors/generate-api-lib-sources/schema.json",
+      "description": "Generate API lib source files via @openapitools/openapi-generator-cli"
+    }
+  }
+}

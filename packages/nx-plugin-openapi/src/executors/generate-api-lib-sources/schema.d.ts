@@ -1,6 +1,6 @@
-import { JsonObject } from '@angular-devkit/core';
+export interface BuildExecutorSchema {} // eslint-disable-line
 
-export interface GenerateApiLibSourcesBuilderSchema extends JsonObject {
+export interface GenerateApiLibSourcesExecutorSchema extends BuildExecutorSchema {
   generator: string;
   sourceSpecPathOrUrl: string;
   sourceSpecUrlAuthorizationHeaders?: string;
