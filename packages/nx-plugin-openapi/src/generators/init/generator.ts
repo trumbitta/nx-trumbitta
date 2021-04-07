@@ -6,9 +6,8 @@ import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-ser
 
 // Utils
 import { openapiGeneratorCliVersion } from '../../utils/versions';
-import { InitGeneratorSchema } from './schema';
 
-export default async function (tree: Tree, _schema: InitGeneratorSchema) {
+export default async function (tree: Tree) {
   const tasks: GeneratorCallback[] = [];
 
   // Add openapi-generator-cli to dev dependencies

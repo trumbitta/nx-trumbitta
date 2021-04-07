@@ -36,7 +36,7 @@ export default async function (tree: Tree, schema: ApiLibGeneratorSchema) {
   const options = normalizeOptions(tree, schema);
 
   // Init
-  const initTask = await init(tree, { ...options, skipFormat: true });
+  const initTask = await init(tree);
   tasks.push(initTask);
 
   // Add Project
