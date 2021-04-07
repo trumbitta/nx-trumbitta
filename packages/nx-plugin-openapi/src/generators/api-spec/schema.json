@@ -30,6 +30,11 @@
       "description": "Also create a sample spec file",
       "x-prompt": "Do you want me to also create a sample spec file for you?",
       "default": false
+    },
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [

@@ -1,5 +1,12 @@
 // Devkit
-import { Tree, generateFiles, addProjectConfiguration, GeneratorCallback, joinPathFragments } from '@nrwl/devkit';
+import {
+  Tree,
+  generateFiles,
+  formatFiles,
+  addProjectConfiguration,
+  GeneratorCallback,
+  joinPathFragments,
+} from '@nrwl/devkit';
 
 // Nrwl
 import { names, offsetFromRoot, projectRootDir, ProjectType } from '@nrwl/workspace';
@@ -32,8 +39,14 @@ export default async function (tree: Tree, schema: ApiSpecGeneratorSchema) {
   // Add Project
   addProject(tree, options);
 
+  // Add Sample
   if (options.withSample) {
     createFiles(tree, options);
+  }
+
+  // Format
+  if (!options.skipFormat) {
+    await formatFiles(tree);
   }
 
   return runTasksInSerial(...tasks);

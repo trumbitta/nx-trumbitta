@@ -3,4 +3,5 @@ export interface ApiSpecGeneratorSchema {
   tags?: string;
   directory?: string;
   withSample?: boolean;
+  skipFormat?: boolean;
 }
