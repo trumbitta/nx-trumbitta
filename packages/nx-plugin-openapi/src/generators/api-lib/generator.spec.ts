@@ -2,13 +2,15 @@
 import { Tree, readJson, updateJson } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
+// Nrwl
+import { NxJson, projectRootDir, ProjectType } from '@nrwl/workspace';
+
 // Generator
 import libraryGenerator from './generator';
 
 // Schemas
 import { ApiLibGeneratorSchema } from './schema';
 import { GenerateApiLibSourcesExecutorSchema } from '../../executors/generate-api-lib-sources/schema';
-import { NxJson, projectRootDir, ProjectType } from '@nrwl/workspace';
 
 describe('api-lib schematic', () => {
   let appTree: Tree;
