@@ -10,4 +10,5 @@ export interface ApiLibGeneratorSchema {
   sourceSpecLib?: string;
   sourceSpecFileRelativePath?: string;
   additionalProperties?: string;
+  skipFormat?: boolean;
 }

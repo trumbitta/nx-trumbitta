@@ -72,6 +72,11 @@
       "description": "Additional properties for the generator",
       "x-prompt": "Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators)",
       "default": ""
+    },
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [

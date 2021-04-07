@@ -7,6 +7,7 @@ import {
   GeneratorCallback,
   getWorkspaceLayout,
   joinPathFragments,
+  formatFiles,
 } from '@nrwl/devkit';
 
 // Nrwl
@@ -48,10 +49,10 @@ export default async function (tree: Tree, schema: ApiLibGeneratorSchema) {
   // Update TS config
   updateTsConfig(tree, options);
 
-  // Could add format? is in root ...
-  // if (!schema.skipFormat) {
-  //   await formatFiles(tree);
-  // }
+  // Format
+  if (!schema.skipFormat) {
+    await formatFiles(tree);
+  }
 
   return runTasksInSerial(...tasks);
 }
