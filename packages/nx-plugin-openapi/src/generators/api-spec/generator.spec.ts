@@ -1,6 +1,5 @@
 // Devkit
 import { Tree, readJson } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Nrwl
 import { NxJson } from '@nrwl/workspace';
@@ -11,12 +10,15 @@ import libraryGenerator from './generator';
 // Schema
 import { ApiSpecGeneratorSchema } from './schema';
 
+// Utils
+import { createTreeWithEmptyV2Workspace } from '../../utils/test-utils';
+
 describe('api-spec schematic', () => {
   let appTree: Tree;
   const defaultSchema: ApiSpecGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyWorkspace();
+    appTree = createTreeWithEmptyV2Workspace();
   });
 
   describe('not nested', () => {

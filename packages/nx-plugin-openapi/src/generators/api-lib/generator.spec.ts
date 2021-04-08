@@ -1,6 +1,5 @@
 // Devkit
 import { Tree, readJson, updateJson } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Nrwl
 import { NxJson, projectRootDir, ProjectType } from '@nrwl/workspace';
@@ -12,19 +11,24 @@ import libraryGenerator from './generator';
 import { ApiLibGeneratorSchema } from './schema';
 import { GenerateApiLibSourcesExecutorSchema } from '../../executors/generate-api-lib-sources/schema';
 
+// Utils
+import { createTreeWithEmptyV2Workspace } from '../../utils/test-utils';
+
 describe('api-lib schematic', () => {
   let appTree: Tree;
+
   const defaultSchema: ApiLibGeneratorSchema = {
     name: 'my-lib',
     isRemoteSpec: false,
     generator: 'typescript-fetch',
+    skipFormat: true,
   };
 
-  describe('not nested', () => {
-    beforeEach(() => {
-      appTree = createTreeWithEmptyWorkspace();
-    });
+  beforeEach(async () => {
+    appTree = createTreeWithEmptyV2Workspace();
+  });
 
+  describe('not nested', () => {
     it('should update tsconfig.base.json', async () => {
       await libraryGenerator(appTree, defaultSchema);
       const tsconfigJson = readJson(appTree, 'tsconfig.base.json');
@@ -50,16 +54,14 @@ describe('api-lib schematic', () => {
 
     describe('When the API spec file is remote', () => {
       const sourceSpecUrl = 'http://foo.bar';
-      let remoteSchema: ApiLibGeneratorSchema;
-      let appTree: Tree;
-
-      beforeEach(async () => {
-        remoteSchema = { ...defaultSchema, isRemoteSpec: true, sourceSpecUrl };
-        appTree = createTreeWithEmptyWorkspace();
-        await libraryGenerator(appTree, remoteSchema);
-      });
+      const remoteSchema: ApiLibGeneratorSchema = {
+        ...defaultSchema,
+        isRemoteSpec: true,
+        sourceSpecUrl,
+      };
 
       it('should update workspace.json', async () => {
+        await libraryGenerator(appTree, remoteSchema);
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: remoteSchema.generator,
           sourceSpecPathOrUrl: sourceSpecUrl,
@@ -74,6 +76,7 @@ describe('api-lib schematic', () => {
       });
 
       it('should NOT add implicitDependencies to nx.json', async () => {
+        await libraryGenerator(appTree, remoteSchema);
         const nxJson = readJson<NxJson>(appTree, '/nx.json');
 
         expect(nxJson.projects).toEqual({
@@ -85,21 +88,15 @@ describe('api-lib schematic', () => {
     });
 
     describe('When the API spec file is local', () => {
-      let localSchema: ApiLibGeneratorSchema;
-      let appTree: Tree;
-
-      beforeEach(async () => {
-        localSchema = {
-          ...defaultSchema,
-          isRemoteSpec: false,
-          sourceSpecLib: 'foo',
-          sourceSpecFileRelativePath: 'src/bar.yml',
-        };
-        appTree = createTreeWithEmptyWorkspace();
+      const localSchema: ApiLibGeneratorSchema = {
+        ...defaultSchema,
+        isRemoteSpec: false,
+        sourceSpecLib: 'foo',
+        sourceSpecFileRelativePath: 'src/bar.yml',
+      };
+      it('should update workspace.json', async () => {
         await libraryGenerator(appTree, localSchema);
-      });
 
-      it('should update workspace.json', () => {
         const workspaceJson = readJson(appTree, '/workspace.json');
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: localSchema.generator,
@@ -117,7 +114,8 @@ describe('api-lib schematic', () => {
         });
       });
 
-      it('should add implicitDependencies to nx.json', () => {
+      it('should add implicitDependencies to nx.json', async () => {
+        await libraryGenerator(appTree, localSchema);
         const nxJson = readJson<NxJson>(appTree, '/nx.json');
 
         expect(nxJson.projects).toEqual({
