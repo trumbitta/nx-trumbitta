@@ -39,10 +39,8 @@ export default async function (tree: Tree, schema: ApiSpecGeneratorSchema) {
   // Add Project
   addProject(tree, options);
 
-  // Add Sample
-  if (options.withSample) {
-    createFiles(tree, options);
-  }
+  // Create Files
+  createFiles(tree, options);
 
   // Format
   if (!options.skipFormat) {
@@ -79,10 +77,13 @@ const addProject = (host: Tree, options: NormalizedSchema) => {
 };
 
 function createFiles(host: Tree, options: NormalizedSchema) {
-  generateFiles(host, joinPathFragments(__dirname, './files'), options.projectRoot, {
-    ...options,
-    ...names(options.name),
-    tmpl: '',
-    offsetFromRoot: offsetFromRoot(options.projectRoot),
-  });
+  !options.withSample && host.write(joinPathFragments(options.projectRoot, 'src/.gitkeep'), '');
+
+  options.withSample &&
+    generateFiles(host, joinPathFragments(__dirname, './files'), options.projectRoot, {
+      ...options,
+      ...names(options.name),
+      tmpl: '',
+      offsetFromRoot: offsetFromRoot(options.projectRoot),
+    });
 }
