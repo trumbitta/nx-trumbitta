@@ -1,6 +1,4 @@
-export interface BuildExecutorSchema {} // eslint-disable-line
-
-export interface GenerateApiLibSourcesExecutorSchema extends BuildExecutorSchema {
+export interface GenerateApiLibSourcesExecutorSchema {
   generator: string;
   sourceSpecPathOrUrl: string;
   sourceSpecUrlAuthorizationHeaders?: string;
