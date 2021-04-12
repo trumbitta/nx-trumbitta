@@ -1,3 +1,18 @@
+## [1.3.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.2.0...v1.3.0) (2021-04-12)
+
+
+### Features
+
+* **generators-api-lib:** add skipFormat property ([c10d87d](https://github.com/trumbitta/nx-trumbitta/commit/c10d87da26ad35d892cc69dc03f9f762337fcdf9))
+* **generators-api-spec:** add skipFormat property ([5bf88f5](https://github.com/trumbitta/nx-trumbitta/commit/5bf88f5d3bd8d412822ddc52c234110f74d12dfb))
+
+
+### Bug Fixes
+
+* **generators-api-spec:** create always sourceRoot directory ([745133d](https://github.com/trumbitta/nx-trumbitta/commit/745133dec6b0ca5e940d3ad5d4e86c9335abc502))
+* **generators-init:** remove unused schema ([27f596a](https://github.com/trumbitta/nx-trumbitta/commit/27f596a7164f0d50e961f3d52be13a389bf1e8a2))
+* **generators-specs:** resolve workspace bug in case of skipFormat = false ([91e223c](https://github.com/trumbitta/nx-trumbitta/commit/91e223c25280d4ceb48e94b1dc5befe3ea32ea8f))
+
 ## [1.2.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.1.1...v1.2.0) (2021-01-19)
 
 
