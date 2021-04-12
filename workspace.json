@@ -1,27 +1,32 @@
 {
-  "version": 1,
+  "version": 2,
   "projects": {
     "nx-plugin-openapi": {
       "root": "packages/nx-plugin-openapi",
       "sourceRoot": "packages/nx-plugin-openapi/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["packages/nx-plugin-openapi/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/nx-plugin-openapi"
+          ],
           "options": {
             "jestConfig": "packages/nx-plugin-openapi/jest.config.js",
             "passWithNoTests": true
           }
         },
         "build": {
-          "builder": "@nrwl/node:package",
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/packages/nx-plugin-openapi",
             "tsConfig": "packages/nx-plugin-openapi/tsconfig.lib.json",
@@ -36,12 +41,12 @@
               },
               {
                 "input": "./packages/nx-plugin-openapi",
-                "glob": "collection.json",
+                "glob": "generators.json",
                 "output": "."
               },
               {
                 "input": "./packages/nx-plugin-openapi",
-                "glob": "builders.json",
+                "glob": "executors.json",
                 "output": "."
               }
             ]
@@ -53,9 +58,9 @@
       "projectType": "application",
       "root": "packages/nx-plugin-openapi-e2e",
       "sourceRoot": "packages/nx-plugin-openapi-e2e/src",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "executor": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "nx-plugin-openapi:build",
             "npmPackageName": "@trumbitta/nx-plugin-openapi",

@@ -1,4 +1,4 @@
-export interface ApiLibSchematicSchema {
+export interface ApiLibGeneratorSchema {
   name: string;
   generator?: string;
   tags?: string;
@@ -10,4 +10,5 @@ export interface ApiLibSchematicSchema {
   sourceSpecLib?: string;
   sourceSpecFileRelativePath?: string;
   additionalProperties?: string;
+  skipFormat?: boolean;
 }

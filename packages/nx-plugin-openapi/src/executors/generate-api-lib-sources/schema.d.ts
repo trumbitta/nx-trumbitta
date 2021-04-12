@@ -1,6 +1,4 @@
-import { JsonObject } from '@angular-devkit/core';
-
-export interface GenerateApiLibSourcesBuilderSchema extends JsonObject {
+export interface GenerateApiLibSourcesExecutorSchema {
   generator: string;
   sourceSpecPathOrUrl: string;
   sourceSpecUrlAuthorizationHeaders?: string;

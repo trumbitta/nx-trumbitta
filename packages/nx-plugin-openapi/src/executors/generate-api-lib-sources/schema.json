@@ -1,6 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "https://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
   "title": "GenerateApiLibSources builder",
   "description": "Generate API lib source files via @openapitools/openapi-generator-cli",
   "type": "object",

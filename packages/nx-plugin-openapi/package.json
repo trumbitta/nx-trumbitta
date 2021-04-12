@@ -2,8 +2,8 @@
   "name": "@trumbitta/nx-plugin-openapi",
   "version": "1.0.1",
   "main": "src/index.js",
-  "schematics": "./collection.json",
-  "builders": "./builders.json",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
   "license": "MIT",
   "peerDependencies": {
     "@nrwl/workspace": ">=10.3.1"
