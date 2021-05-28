@@ -27,7 +27,9 @@
     "workspace-generator": "nx workspace-generator"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "cross-spawn": "^7.0.3"
+  },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
