@@ -63,7 +63,7 @@ function generateSources(
     const args = ['generate', '-i', apiSpecPathOrUrl, '-g', generator, '-o', outputDir];
 
     if (additionalProperties) {
-      args.push(...['--additional-properties', additionalProperties]);
+      args.push(`--additional-properties=${additionalProperties}`);
     }
 
     if (apiSpecAuthorizationHeaders) {
