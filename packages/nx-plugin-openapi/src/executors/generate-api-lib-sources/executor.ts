@@ -77,7 +77,7 @@ function generateSources(
     }
 
     if (globalProperties) {
-      args.push(`--global-properties=${globalProperties}`);
+      args.push(`--global-property=${globalProperties}`);
     }
 
     const child = childProcess.spawn('node_modules/.bin/openapi-generator-cli', args);
