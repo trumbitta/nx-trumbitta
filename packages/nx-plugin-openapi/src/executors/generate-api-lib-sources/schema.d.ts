@@ -3,5 +3,6 @@ export interface GenerateApiLibSourcesExecutorSchema {
   sourceSpecPathOrUrl: string;
   sourceSpecUrlAuthorizationHeaders?: string;
   additionalProperties?: string;
+  globalProperties?: string;
   typeMappings?: string;
 }

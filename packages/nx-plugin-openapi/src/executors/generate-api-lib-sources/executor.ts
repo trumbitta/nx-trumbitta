@@ -35,6 +35,7 @@ export default async function runExecutor(
             options.sourceSpecUrlAuthorizationHeaders,
             options.generator,
             options.additionalProperties,
+            options.globalProperties,
             options.typeMappings,
             outputDir,
           ),
@@ -56,6 +57,7 @@ function generateSources(
   apiSpecAuthorizationHeaders: string,
   generator: string,
   additionalProperties: string,
+  globalProperties: string,
   typeMappings: string,
   outputDir: string,
 ): Promise<number> {
@@ -72,6 +74,10 @@ function generateSources(
 
     if (typeMappings) {
       args.push(...['--type-mappings', typeMappings]);
+    }
+
+    if (globalProperties) {
+      args.push(`--global-property=${globalProperties}`);
     }
 
     const child = childProcess.spawn('node_modules/.bin/openapi-generator-cli', args);
