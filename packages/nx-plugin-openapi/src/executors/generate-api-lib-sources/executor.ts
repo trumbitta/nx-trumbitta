@@ -4,7 +4,7 @@ import { logger, ExecutorContext } from '@nrwl/devkit';
 // Third Parties
 import { from, of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
-import spawn from 'cross-spawn';
+import { spawn } from 'cross-spawn';
 
 // Utils
 import { deleteOutputDir } from '../../utils/delete-output-dir';
