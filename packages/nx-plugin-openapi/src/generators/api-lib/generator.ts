@@ -94,6 +94,7 @@ const getExecutorOptions = (options: NormalizedSchema): GenerateApiLibSourcesExe
   if (options.isRemoteSpec && options.sourceSpecUrlAuthorizationHeaders) {
     executorOptions.sourceSpecUrlAuthorizationHeaders = options.sourceSpecUrlAuthorizationHeaders;
   }
+
   return executorOptions;
 };
 

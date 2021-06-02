@@ -1,8 +1,7 @@
 // Nrwl
 import { ensureNxProject, runNxCommandAsync } from '@nrwl/nx-plugin/testing';
-import { projectRootDir, ProjectType } from '@nrwl/workspace';
 
-describe('happy-path e2e', () => {
+describe('Happy-path', () => {
   it('should work with a local spec', async (done) => {
     ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
