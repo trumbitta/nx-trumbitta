@@ -73,6 +73,12 @@
       "x-prompt": "Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators)",
       "default": ""
     },
+    "globalProperties": {
+      "type": "string",
+      "description": "Global properties for the generator",
+      "x-prompt": "Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals)",
+      "default": ""
+    },
     "skipFormat": {
       "description": "Skip formatting files.",
       "type": "boolean",
