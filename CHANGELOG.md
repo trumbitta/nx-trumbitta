@@ -1,3 +1,13 @@
+### [1.3.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.3.0...v1.3.1) (2021-05-31)
+
+
+### Bug Fixes
+
+* **generators-api-lib:** add cross-spawn ([472cc20](https://github.com/trumbitta/nx-trumbitta/commit/472cc2091ecc1bcc877c29b5778b969d8ceff54e))
+* **generators-api-lib:** install cross-spawn types ([1a0b362](https://github.com/trumbitta/nx-trumbitta/commit/1a0b3622919a1d49a0c3d118fefce4b83ab7aff5))
+* **generators-api-lib:** move esModuleInterop ([459a858](https://github.com/trumbitta/nx-trumbitta/commit/459a8583de879fb4c29f4fc4e7c2cce68a813c19))
+* **generators-api-lib:** use cross-spawn ([e9ac14b](https://github.com/trumbitta/nx-trumbitta/commit/e9ac14b086c316c57aede4ac2ae499187241e716))
+
 ## [1.3.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.2.0...v1.3.0) (2021-04-12)
 
 
