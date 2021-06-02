@@ -1,3 +1,18 @@
+## [1.4.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.3.1...v1.4.0) (2021-06-02)
+
+
+### Features
+
+* **global-properties:** add global-properties option ([fed54ee](https://github.com/trumbitta/nx-trumbitta/commit/fed54eedfc997343eb24645a2b8e0a534aac307d))
+* **global-properties:** use spread operator ([6d69298](https://github.com/trumbitta/nx-trumbitta/commit/6d6929819bfebb3a2ed30e2e3a29b740a2675548))
+
+
+### Bug Fixes
+
+* **global-properties:** add missing option when building the executor configuration ([6d6fbf9](https://github.com/trumbitta/nx-trumbitta/commit/6d6fbf9700aea59ebae06e31462dd295c16e071c))
+* **global-property:** typo fix (original was correct) ([b5a2dc6](https://github.com/trumbitta/nx-trumbitta/commit/b5a2dc66a727cddb6bb84c58e5a911085e010142))
+* **typo:** global-property => global-properties ([92f7100](https://github.com/trumbitta/nx-trumbitta/commit/92f710015c0c609b10bb820b7474ca2c5cdad1c9))
+
 ### [1.3.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.3.0...v1.3.1) (2021-05-31)
 
 
