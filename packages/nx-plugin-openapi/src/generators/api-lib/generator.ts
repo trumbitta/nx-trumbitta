@@ -88,6 +88,7 @@ const getExecutorOptions = (options: NormalizedSchema): GenerateApiLibSourcesExe
       ? options.sourceSpecUrl
       : [options.projectRootApiSpecLib, options.sourceSpecFileRelativePath].join('/'),
     additionalProperties: options.additionalProperties,
+    globalProperties: options.globalProperties,
   };
 
   if (options.isRemoteSpec && options.sourceSpecUrlAuthorizationHeaders) {
