@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "fmmenchi",
+      "name": "fmmenchi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12685345?v=4",
+      "profile": "https://github.com/fmmenchi",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "nx-trumbitta",
+  "projectOwner": "trumbitta",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
