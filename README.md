@@ -5,7 +5,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 ![CI](https://github.com/trumbitta/nx-trumbitta/workflows/CI/badge.svg?event=push)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -29,6 +29,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/fmmenchi"><img src="https://avatars.githubusercontent.com/u/12685345?v=4?s=100" width="100px;" alt=""/><br /><sub><b>fmmenchi</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/commits?author=fmmenchi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/djbreen7"><img src="https://avatars.githubusercontent.com/u/13296622?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/commits?author=djbreen7" title="Code">💻</a> <a href="https://github.com/trumbitta/nx-trumbitta/issues?q=author%3Adjbreen7" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
