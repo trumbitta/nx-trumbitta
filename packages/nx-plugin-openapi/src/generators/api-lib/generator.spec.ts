@@ -1,8 +1,7 @@
-// Devkit
-import { Tree, readJson, updateJson } from '@nrwl/devkit';
-
 // Nrwl
-import { NxJson, projectRootDir, ProjectType } from '@nrwl/workspace';
+import { Tree, readJson, updateJson, WorkspaceJsonConfiguration, NxJsonConfiguration } from '@nrwl/devkit';
+import { projectRootDir, ProjectType } from '@nrwl/workspace';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Generator
 import libraryGenerator from './generator';
@@ -10,9 +9,6 @@ import libraryGenerator from './generator';
 // Schemas
 import { ApiLibGeneratorSchema } from './schema';
 import { GenerateApiLibSourcesExecutorSchema } from '../../executors/generate-api-lib-sources/schema';
-
-// Utils
-import { createTreeWithEmptyV2Workspace } from '../../utils/test-utils';
 
 describe('api-lib schematic', () => {
   let appTree: Tree;
@@ -25,7 +21,7 @@ describe('api-lib schematic', () => {
   };
 
   beforeEach(async () => {
-    appTree = createTreeWithEmptyV2Workspace();
+    appTree = createTreeWithEmptyWorkspace(2);
   });
 
   describe('not nested', () => {
@@ -66,7 +62,7 @@ describe('api-lib schematic', () => {
           generator: remoteSchema.generator,
           sourceSpecPathOrUrl: sourceSpecUrl,
         };
-        const workspaceJson = readJson(appTree, '/workspace.json');
+        const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
 
         expect(workspaceJson.projects[remoteSchema.name].root).toEqual(`libs/${remoteSchema.name}`);
         expect(workspaceJson.projects[remoteSchema.name].targets['generate-sources']).toMatchObject({
@@ -77,7 +73,7 @@ describe('api-lib schematic', () => {
 
       it('should NOT add implicitDependencies to nx.json', async () => {
         await libraryGenerator(appTree, remoteSchema);
-        const nxJson = readJson<NxJson>(appTree, '/nx.json');
+        const nxJson = readJson<NxJsonConfiguration>(appTree, '/nx.json');
 
         expect(nxJson.projects).toEqual({
           [remoteSchema.name]: {
@@ -97,7 +93,7 @@ describe('api-lib schematic', () => {
       it('should update workspace.json', async () => {
         await libraryGenerator(appTree, localSchema);
 
-        const workspaceJson = readJson(appTree, '/workspace.json');
+        const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: localSchema.generator,
           sourceSpecPathOrUrl: [
@@ -116,7 +112,7 @@ describe('api-lib schematic', () => {
 
       it('should add implicitDependencies to nx.json', async () => {
         await libraryGenerator(appTree, localSchema);
-        const nxJson = readJson<NxJson>(appTree, '/nx.json');
+        const nxJson = readJson<NxJsonConfiguration>(appTree, '/nx.json');
 
         expect(nxJson.projects).toEqual({
           [localSchema.name]: {

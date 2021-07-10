@@ -2,12 +2,12 @@
 import { ensureNxProject, runNxCommandAsync } from '@nrwl/nx-plugin/testing';
 
 describe('Happy-path', () => {
-  it('should work with a local spec', async (done) => {
+  it('should work with a local spec', async () => {
     ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
-    await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
+    const generate1 = await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
 
-    await runNxCommandAsync(
+    const generate2 = await runNxCommandAsync(
       [
         'generate',
         '@trumbitta/nx-plugin-openapi:api-lib',
@@ -18,14 +18,13 @@ describe('Happy-path', () => {
       ].join(' '),
     );
 
-    await runNxCommandAsync(`run api-lib:generate-sources`);
+    const execute = await runNxCommandAsync(`run api-lib:generate-sources`);
 
     // TODO devise proper expectations
-    expect(true).toBe(true);
-    done();
-  }, 90000);
+    expect(execute.stdout).toContain('Done deleting outputDir');
+  }, 120000);
 
-  it('should work with a remote spec', async (done) => {
+  it('should work with a remote spec', async () => {
     ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
     await runNxCommandAsync(
@@ -43,11 +42,10 @@ describe('Happy-path', () => {
 
     // TODO devise proper expectations
     expect(true).toBe(true);
-    done();
-  }, 90000);
+  }, 120000);
 
   describe('When using the --global-properties option', () => {
-    it('should work with just one value', async (done) => {
+    it('should work with just one value', async () => {
       ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
       await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
@@ -68,10 +66,9 @@ describe('Happy-path', () => {
 
       // TODO devise proper expectations
       expect(true).toBe(true);
-      done();
-    }, 90000);
+    }, 120000);
 
-    it('should work with multiple values', async (done) => {
+    it('should work with multiple values', async () => {
       ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
 
       await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
@@ -92,7 +89,6 @@ describe('Happy-path', () => {
 
       // TODO devise proper expectations
       expect(true).toBe(true);
-      done();
-    }, 90000);
+    }, 120000);
   });
 });

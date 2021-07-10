@@ -25,17 +25,17 @@
       }
     }
   },
-  "projects": {
-    "nx-plugin-openapi": {
-      "tags": []
-    },
-    "nx-plugin-openapi-e2e": {
-      "tags": [],
-      "implicitDependencies": ["nx-plugin-openapi"]
-    }
-  },
+  "projects": {},
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

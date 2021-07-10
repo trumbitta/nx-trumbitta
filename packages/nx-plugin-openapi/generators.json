@@ -1,15 +1,13 @@
 {
   "$schema": "http://json-schema.org/schema",
   "name": "nx-plugin-openapi",
-  "version": "0.0.1",
+  "version": "1.4.0",
   "generators": {
     "init": {
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
       "description": "Initialize the @trumbitta/nx-plugin-openapi plugin",
-      "aliases": [
-        "ng-add"
-      ],
+      "aliases": ["ng-add"],
       "hidden": true
     },
     "api-spec": {
