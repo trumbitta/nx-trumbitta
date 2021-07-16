@@ -1,3 +1,10 @@
+### [1.5.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.5.0...v1.5.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* **nx-plugin-openapi:** fix botched 1.6.0 release and add required peer dependency ([a2059e4](https://github.com/trumbitta/nx-trumbitta/commit/a2059e4f94a6a5661ec25a7f080721e0b0300a4f))
+
 ## [1.5.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.4.0...v1.5.0) (2021-07-16)
 
 
