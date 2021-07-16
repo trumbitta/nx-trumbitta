@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.4.0...v1.5.0) (2021-07-16)
+
+
+### Features
+
+* **nx-plugin-openapi:** update to Nx 12.5.8 ([6ef4170](https://github.com/trumbitta/nx-trumbitta/commit/6ef4170e867c8bef1cbfd9d3582eace5e0681754)), closes [#34](https://github.com/trumbitta/nx-trumbitta/issues/34)
+
 ## [1.4.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.3.1...v1.4.0) (2021-06-02)
 
 
