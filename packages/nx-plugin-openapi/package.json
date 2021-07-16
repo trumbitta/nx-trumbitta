@@ -6,6 +6,7 @@
   "executors": "./executors.json",
   "license": "MIT",
   "peerDependencies": {
-    "@nrwl/workspace": ">=10.3.1"
+    "@angular-devkit/schematics": ">=12.1.2",
+    "@nrwl/workspace": ">=12.5.8"
   }
 }
