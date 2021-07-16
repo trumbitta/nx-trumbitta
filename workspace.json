@@ -1,75 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "nx-plugin-openapi": {
-      "root": "packages/nx-plugin-openapi",
-      "sourceRoot": "packages/nx-plugin-openapi/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/nx-plugin-openapi/**/*.ts"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-plugin-openapi"
-          ],
-          "options": {
-            "jestConfig": "packages/nx-plugin-openapi/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/packages/nx-plugin-openapi",
-            "tsConfig": "packages/nx-plugin-openapi/tsconfig.lib.json",
-            "packageJson": "packages/nx-plugin-openapi/package.json",
-            "main": "packages/nx-plugin-openapi/src/index.ts",
-            "assets": [
-              "packages/nx-plugin-openapi/*.md",
-              {
-                "input": "./packages/nx-plugin-openapi/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/nx-plugin-openapi",
-                "glob": "generators.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/nx-plugin-openapi",
-                "glob": "executors.json",
-                "output": "."
-              }
-            ]
-          }
-        }
-      }
-    },
-    "nx-plugin-openapi-e2e": {
-      "projectType": "application",
-      "root": "packages/nx-plugin-openapi-e2e",
-      "sourceRoot": "packages/nx-plugin-openapi-e2e/src",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/nx-plugin:e2e",
-          "options": {
-            "target": "nx-plugin-openapi:build",
-            "npmPackageName": "@trumbitta/nx-plugin-openapi",
-            "pluginOutputPath": "dist/packages/nx-plugin-openapi",
-            "jestConfig": "packages/nx-plugin-openapi-e2e/jest.config.js"
-          }
-        }
-      }
-    }
+    "nx-plugin-openapi": "packages/nx-plugin-openapi",
+    "nx-plugin-openapi-e2e": "packages/nx-plugin-openapi-e2e"
   },
   "cli": {
     "defaultCollection": "@nrwl/workspace"

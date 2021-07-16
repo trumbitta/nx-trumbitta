@@ -1,8 +1,6 @@
-// Devkit
-import { Tree, readJson } from '@nrwl/devkit';
-
 // Nrwl
-import { NxJson } from '@nrwl/workspace';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { NxJsonConfiguration, readJson, Tree, WorkspaceJsonConfiguration } from '@nrwl/devkit';
 
 // Generator
 import libraryGenerator from './generator';
@@ -10,22 +8,19 @@ import libraryGenerator from './generator';
 // Schema
 import { ApiSpecGeneratorSchema } from './schema';
 
-// Utils
-import { createTreeWithEmptyV2Workspace } from '../../utils/test-utils';
-
 describe('api-spec schematic', () => {
   let appTree: Tree;
   const defaultSchema: ApiSpecGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyV2Workspace();
+    appTree = createTreeWithEmptyWorkspace(2);
   });
 
   describe('not nested', () => {
     it('should update workspace.json', async () => {
       await libraryGenerator(appTree, defaultSchema);
 
-      const workspaceJson = readJson(appTree, '/workspace.json');
+      const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
 
       expect(workspaceJson.projects[defaultSchema.name].root).toEqual(`libs/${defaultSchema.name}`);
     });
@@ -33,7 +28,7 @@ describe('api-spec schematic', () => {
     it('should update nx.json', async () => {
       await libraryGenerator(appTree, defaultSchema);
 
-      const nxJson = readJson<NxJson>(appTree, '/nx.json');
+      const nxJson = readJson<NxJsonConfiguration>(appTree, '/nx.json');
       expect(nxJson.projects).toEqual({
         [defaultSchema.name]: {
           tags: [],

@@ -1,4 +1,4 @@
-// Devkit
+// Nrwl
 import {
   Tree,
   generateFiles,
@@ -7,8 +7,6 @@ import {
   GeneratorCallback,
   joinPathFragments,
 } from '@nrwl/devkit';
-
-// Nrwl
 import { names, offsetFromRoot, projectRootDir, ProjectType } from '@nrwl/workspace';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 

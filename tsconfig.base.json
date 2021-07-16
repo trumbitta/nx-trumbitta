@@ -16,9 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trumbitta/nx-plugin-openapi": [
-        "packages/nx-plugin-openapi/src/index.ts"
-      ]
+      "@trumbitta/nx-plugin-openapi": ["packages/nx-plugin-openapi/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

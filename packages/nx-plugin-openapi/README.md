@@ -1,7 +1,7 @@
 # OpenAPI Plugin for Nx
 
-[![NPM Version](https://badge.fury.io/js/%40trumbitta%2Fnx-plugin-openapi.svg)](https://www.npmjs.com/@trumbitta/nx-plugin-openapi)
-[![License](https://img.shields.io/npm/l/@trumbitta/nx-plugin-openapi)]()
+[![NPM Version](https://badge.fury.io/js/%40trumbitta%2Fsaved.svg)](https://www.npmjs.com/@trumbitta/saved)
+[![License](https://img.shields.io/npm/l/@trumbitta/saved)]()
 
 Keep your API spec files in libs, and auto-generate sources.
 
@@ -18,7 +18,7 @@ It's a plugin for organizing OpenAPI spec files in libraries. You can then have 
 ## 💡 How to install
 
 ```sh
-npm install -D @trumbitta/nx-plugin-openapi
+npm install -D @trumbitta/saved
 ```
 
 ### Prerequisites
@@ -30,7 +30,7 @@ Sources get auto-generated via [`openapi-generator-cli`](https://github.com/Open
 ### Create a lib for an API spec file
 
 ```sh
-nx generate @trumbitta/nx-plugin-openapi:api-spec
+nx generate @trumbitta/saved:api-spec
 ```
 
 ```sh
@@ -45,7 +45,7 @@ UPDATE nx.json (890 bytes)
 ### Create a lib for auto-generated docs
 
 ```sh
-nx generate @trumbitta/nx-plugin-openapi:api-lib
+nx generate @trumbitta/saved:api-lib
 ```
 
 ```sh
@@ -62,7 +62,7 @@ UPDATE nx.json (837 bytes)
 ### Create a lib for auto-generated client sources
 
 ```sh
-nx generate @trumbitta/nx-plugin-openapi:api-lib
+nx generate @trumbitta/saved:api-lib
 ```
 
 ```sh

@@ -1,17 +1,15 @@
-// Devkit
+// Nrwl
 import { Tree, readJson } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Generator
 import libraryGenerator from './generator';
-
-// Utils
-import { createTreeWithEmptyV2Workspace } from '../../utils/test-utils';
 
 describe('init schematic', () => {
   let appTree: Tree;
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyV2Workspace();
+    appTree = createTreeWithEmptyWorkspace(2);
   });
 
   it('should add openapi dep to package.json if not already present', async () => {
