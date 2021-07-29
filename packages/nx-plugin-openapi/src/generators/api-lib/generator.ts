@@ -8,8 +8,11 @@ import {
   getWorkspaceLayout,
   joinPathFragments,
   formatFiles,
+  names,
+  offsetFromRoot,
+  ProjectType,
+  readWorkspaceConfiguration,
 } from '@nrwl/devkit';
-import { names, offsetFromRoot, projectRootDir, ProjectType } from '@nrwl/workspace';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 
 // Schematics
@@ -19,7 +22,7 @@ import init from '../init/generator';
 import { ApiLibGeneratorSchema } from './schema';
 import { GenerateApiLibSourcesExecutorSchema } from '../../executors/generate-api-lib-sources/schema';
 
-const projectType = ProjectType.Library;
+const projectType: ProjectType = 'library';
 
 interface NormalizedSchema extends ApiLibGeneratorSchema {
   projectName: string;
@@ -61,10 +64,10 @@ function normalizeOptions(host: Tree, options: ApiLibGeneratorSchema): Normalize
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
   const { libsDir, npmScope } = getWorkspaceLayout(host);
   const projectRoot = joinPathFragments(`${libsDir}/${projectDirectory}`);
+
+  const workspaceLayout = readWorkspaceConfiguration(host).workspaceLayout ?? { libsDir: 'libs' };
   const projectRootApiSpecLib =
-    !options.isRemoteSpec && options.sourceSpecLib
-      ? `${projectRootDir(projectType)}/${options.sourceSpecLib}`
-      : undefined;
+    !options.isRemoteSpec && options.sourceSpecLib ? `${workspaceLayout.libsDir}/${options.sourceSpecLib}` : undefined;
   const parsedTags = options.tags ? options.tags.split(',').map((s) => s.trim()) : [];
   const importPath = options.importPath || `@${npmScope}/${projectDirectory}`;
 

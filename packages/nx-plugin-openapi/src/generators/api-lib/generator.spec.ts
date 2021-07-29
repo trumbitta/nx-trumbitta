@@ -1,6 +1,5 @@
 // Nrwl
 import { Tree, readJson, updateJson, WorkspaceJsonConfiguration, NxJsonConfiguration } from '@nrwl/devkit';
-import { projectRootDir, ProjectType } from '@nrwl/workspace';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Generator
@@ -96,11 +95,7 @@ describe('api-lib schematic', () => {
         const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: localSchema.generator,
-          sourceSpecPathOrUrl: [
-            projectRootDir(ProjectType.Library),
-            localSchema.sourceSpecLib,
-            localSchema.sourceSpecFileRelativePath,
-          ].join('/'),
+          sourceSpecPathOrUrl: ['libs', localSchema.sourceSpecLib, localSchema.sourceSpecFileRelativePath].join('/'),
         };
 
         expect(workspaceJson.projects[localSchema.name].root).toEqual(`libs/${localSchema.name}`);

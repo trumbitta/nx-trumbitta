@@ -1,6 +1,6 @@
 // Nrwl
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { NxJsonConfiguration, readJson, Tree, WorkspaceJsonConfiguration } from '@nrwl/devkit';
+import { NxJsonConfiguration, readJson, Tree, readProjectConfiguration } from '@nrwl/devkit';
 
 // Generator
 import libraryGenerator from './generator';
@@ -19,10 +19,9 @@ describe('api-spec schematic', () => {
   describe('not nested', () => {
     it('should update workspace.json', async () => {
       await libraryGenerator(appTree, defaultSchema);
+      const projectRoot = readProjectConfiguration(appTree, defaultSchema.name).root;
 
-      const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
-
-      expect(workspaceJson.projects[defaultSchema.name].root).toEqual(`libs/${defaultSchema.name}`);
+      expect(projectRoot).toEqual(`libs/${defaultSchema.name}`);
     });
 
     it('should update nx.json', async () => {

@@ -7,8 +7,6 @@
       "executor": "@nrwl/nx-plugin:e2e",
       "options": {
         "target": "nx-plugin-openapi:build",
-        "npmPackageName": "@trumbitta/nx-plugin-openapi",
-        "pluginOutputPath": "dist/packages/nx-plugin-openapi",
         "jestConfig": "packages/nx-plugin-openapi-e2e/jest.config.js"
       }
     }
