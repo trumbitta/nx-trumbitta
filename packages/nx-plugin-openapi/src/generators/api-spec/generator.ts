@@ -6,8 +6,11 @@ import {
   addProjectConfiguration,
   GeneratorCallback,
   joinPathFragments,
+  names,
+  offsetFromRoot,
+  ProjectType,
+  readWorkspaceConfiguration,
 } from '@nrwl/devkit';
-import { names, offsetFromRoot, projectRootDir, ProjectType } from '@nrwl/workspace';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 
 // Schematics
@@ -16,7 +19,7 @@ import init from '../init/generator';
 // Schema
 import { ApiSpecGeneratorSchema } from './schema';
 
-const projectType = ProjectType.Library;
+const projectType: ProjectType = 'library';
 
 interface NormalizedSchema extends ApiSpecGeneratorSchema {
   projectName: string;
@@ -28,7 +31,7 @@ interface NormalizedSchema extends ApiSpecGeneratorSchema {
 export default async function (tree: Tree, schema: ApiSpecGeneratorSchema) {
   const tasks: GeneratorCallback[] = [];
 
-  const options = normalizeOptions(schema);
+  const options = normalizeOptions(schema, tree);
 
   // Init
   const initTask = await init(tree);
@@ -48,11 +51,12 @@ export default async function (tree: Tree, schema: ApiSpecGeneratorSchema) {
   return runTasksInSerial(...tasks);
 }
 
-function normalizeOptions(options: ApiSpecGeneratorSchema): NormalizedSchema {
+function normalizeOptions(options: ApiSpecGeneratorSchema, tree: Tree): NormalizedSchema {
   const name = names(options.name).fileName;
   const projectDirectory = options.directory ? `${names(options.name).fileName}/${name}` : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${projectRootDir(projectType)}/${projectDirectory}`;
+  const workspaceLayout = readWorkspaceConfiguration(tree).workspaceLayout ?? { libsDir: 'libs' };
+  const projectRoot = `${workspaceLayout.libsDir}/${projectDirectory}`;
   const parsedTags = options.tags ? options.tags.split(',').map((s) => s.trim()) : [];
 
   return {

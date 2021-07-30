@@ -1,6 +1,5 @@
 // Nrwl
 import { Tree, readJson, updateJson, WorkspaceJsonConfiguration, NxJsonConfiguration } from '@nrwl/devkit';
-import { projectRootDir, ProjectType } from '@nrwl/workspace';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Generator
@@ -46,6 +45,11 @@ describe('api-lib schematic', () => {
       expect(tsconfigJson.compilerOptions.paths[`@proj/${defaultSchema.name}`]).toEqual([
         `libs/${defaultSchema.name}/src/index.ts`,
       ]);
+    });
+
+    it('should add a .babelrc file', async () => {
+      await libraryGenerator(appTree, defaultSchema);
+      expect(appTree.exists(`libs/${defaultSchema.name}/.babelrc`)).toBeTruthy();
     });
 
     describe('When the API spec file is remote', () => {
@@ -96,11 +100,7 @@ describe('api-lib schematic', () => {
         const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: localSchema.generator,
-          sourceSpecPathOrUrl: [
-            projectRootDir(ProjectType.Library),
-            localSchema.sourceSpecLib,
-            localSchema.sourceSpecFileRelativePath,
-          ].join('/'),
+          sourceSpecPathOrUrl: ['libs', localSchema.sourceSpecLib, localSchema.sourceSpecFileRelativePath].join('/'),
         };
 
         expect(workspaceJson.projects[localSchema.name].root).toEqual(`libs/${localSchema.name}`);

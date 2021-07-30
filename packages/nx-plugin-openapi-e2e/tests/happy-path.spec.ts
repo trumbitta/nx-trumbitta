@@ -1,94 +1,98 @@
 // Nrwl
-import { ensureNxProject, runNxCommandAsync } from '@nrwl/nx-plugin/testing';
+import { ensureNxProject, runNxCommand, uniq } from '@nrwl/nx-plugin/testing';
 
 describe('Happy-path', () => {
-  it('should work with a local spec', async () => {
+  let apiSpecLibName: string;
+  let apiLibLibName: string;
+
+  beforeAll(() => {
     ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
+  });
 
-    const generate1 = await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
+  beforeEach(() => {
+    apiSpecLibName = uniq('api-spec');
+    apiLibLibName = uniq('api-lib');
+  });
 
-    const generate2 = await runNxCommandAsync(
+  it('should work with a local spec', () => {
+    runNxCommand(`generate @trumbitta/nx-plugin-openapi:api-spec ${apiSpecLibName} --withSample`);
+
+    runNxCommand(
       [
         'generate',
         '@trumbitta/nx-plugin-openapi:api-lib',
-        'api-lib',
+        apiLibLibName,
         '--generator=typescript-fetch',
-        '--sourceSpecLib=api-spec',
-        `--sourceSpecFileRelativePath=src/api-spec.openapi.yml`,
+        `--sourceSpecLib=${apiSpecLibName}`,
+        `--sourceSpecFileRelativePath=src/${apiSpecLibName}.openapi.yml`,
       ].join(' '),
     );
 
-    const execute = await runNxCommandAsync(`run api-lib:generate-sources`);
+    const execute = runNxCommand(`run ${apiLibLibName}:generate-sources`);
 
     // TODO devise proper expectations
-    expect(execute.stdout).toContain('Done deleting outputDir');
+    expect(execute).toContain('Done deleting outputDir');
   }, 120000);
 
-  it('should work with a remote spec', async () => {
-    ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
-
-    await runNxCommandAsync(
+  it('should work with a remote spec', () => {
+    runNxCommand(
       [
         'generate',
         '@trumbitta/nx-plugin-openapi:api-lib',
-        'api-lib',
+        apiLibLibName,
         '--generator=typescript-fetch',
         '--isRemoteSpec=true',
         '--sourceSpecUrl=https://petstore.swagger.io/v2/swagger.json',
       ].join(' '),
     );
 
-    await runNxCommandAsync(`run api-lib:generate-sources`);
+    const execute = runNxCommand(`run ${apiLibLibName}:generate-sources`);
 
     // TODO devise proper expectations
-    expect(true).toBe(true);
+    expect(execute).toContain('Done deleting outputDir');
   }, 120000);
 
   describe('When using the --global-properties option', () => {
     it('should work with just one value', async () => {
-      ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
+      runNxCommand(`generate @trumbitta/nx-plugin-openapi:api-spec ${apiSpecLibName} --withSample`);
 
-      await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
-
-      await runNxCommandAsync(
+      runNxCommand(
         [
           'generate',
           '@trumbitta/nx-plugin-openapi:api-lib',
-          'api-lib-global-properties',
+          apiLibLibName,
           '--generator=typescript-fetch',
-          '--sourceSpecLib=api-spec',
-          `--sourceSpecFileRelativePath=src/api-spec.openapi.yml`,
+          `--sourceSpecLib=${apiSpecLibName}`,
+          `--sourceSpecFileRelativePath=src/${apiSpecLibName}.openapi.yml`,
           `--global-properties=apis`,
         ].join(' '),
       );
 
-      await runNxCommandAsync(`run api-lib-global-properties:generate-sources`);
+      const execute = runNxCommand(`run ${apiLibLibName}:generate-sources`);
 
       // TODO devise proper expectations
-      expect(true).toBe(true);
+      expect(execute).toContain('Done deleting outputDir');
     }, 120000);
 
     it('should work with multiple values', async () => {
-      ensureNxProject('@trumbitta/nx-plugin-openapi', 'dist/packages/nx-plugin-openapi');
+      runNxCommand(`generate @trumbitta/nx-plugin-openapi:api-spec ${apiSpecLibName} --withSample`);
 
-      await runNxCommandAsync(`generate @trumbitta/nx-plugin-openapi:api-spec api-spec --withSample`);
-
-      await runNxCommandAsync(
+      runNxCommand(
         [
           'generate',
           '@trumbitta/nx-plugin-openapi:api-lib',
-          'api-lib-global-properties',
+          apiLibLibName,
           '--generator=typescript-fetch',
-          '--sourceSpecLib=api-spec',
-          `--sourceSpecFileRelativePath=src/api-spec.openapi.yml`,
+          `--sourceSpecLib=${apiSpecLibName}`,
+          `--sourceSpecFileRelativePath=src/${apiSpecLibName}.openapi.yml`,
           `--global-properties=apis,supportingFiles=runtime.ts`,
         ].join(' '),
       );
 
-      await runNxCommandAsync(`run api-lib-global-properties:generate-sources`);
+      const execute = runNxCommand(`run ${apiLibLibName}:generate-sources`);
 
       // TODO devise proper expectations
-      expect(true).toBe(true);
+      expect(execute).toContain('Done deleting outputDir');
     }, 120000);
   });
 });

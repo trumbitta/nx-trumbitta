@@ -3,7 +3,7 @@
 [![NPM Version](https://badge.fury.io/js/%40trumbitta%2Fnx-plugin-openapi.svg)](https://www.npmjs.com/@trumbitta/nx-plugin-openapi)
 [![License](https://img.shields.io/npm/l/@trumbitta/nx-plugin-openapi)]()
 
-Keep your API spec files in libs, and auto-generate sources.
+Keep your API spec files in libs, and auto-generate sources and docs.
 
 ## Warning
 
@@ -18,10 +18,8 @@ It's a plugin for organizing OpenAPI spec files in libraries. You can then have 
 ## 💡 How to install
 
 ```sh
-npm install -D @trumbitta/nx-plugin-openapi @angular-devkit/schematics
+npm install -D @trumbitta/nx-plugin-openapi
 ```
-
-**ℹ️ The `@angular-devkit/schematics` is especially needed if you are installing on a empty workspace!**
 
 ### Prerequisites
 
@@ -95,7 +93,7 @@ nx run api-fetch:generate-sources
 
 This OpenAPI plugin for Nx should support any generator you can use with `openapi-generator-cli`.
 
-Find the ones you need, togethere with all the additional properties available for each, here: https://openapi-generator.tech/docs/generators
+Find the ones you need, together with all the additional properties available for each generator, here: https://openapi-generator.tech/docs/generators
 
 ## 🙏 Acknowledgements
 
