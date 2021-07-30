@@ -15,6 +15,9 @@ import {
 } from '@nrwl/devkit';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 
+// Third Parties
+import { join } from 'path';
+
 // Schematics
 import init from '../init/generator';
 
@@ -118,9 +121,10 @@ const addProject = (host: Tree, options: NormalizedSchema) => {
 };
 
 function createFiles(host: Tree, options: NormalizedSchema) {
-  generateFiles(host, joinPathFragments(__dirname, './files'), options.projectRoot, {
+  generateFiles(host, join(__dirname, './files'), options.projectRoot, {
     ...options,
     ...names(options.name),
+    dot: '.',
     tmpl: '',
     offsetFromRoot: offsetFromRoot(options.projectRoot),
   });

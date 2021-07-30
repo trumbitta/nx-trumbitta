@@ -47,6 +47,11 @@ describe('api-lib schematic', () => {
       ]);
     });
 
+    it('should add a .babelrc file', async () => {
+      await libraryGenerator(appTree, defaultSchema);
+      expect(appTree.exists(`libs/${defaultSchema.name}/.babelrc`)).toBeTruthy();
+    });
+
     describe('When the API spec file is remote', () => {
       const sourceSpecUrl = 'http://foo.bar';
       const remoteSchema: ApiLibGeneratorSchema = {
