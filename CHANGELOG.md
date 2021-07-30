@@ -1,3 +1,11 @@
+## [1.6.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.5.1...v1.6.0) (2021-07-30)
+
+
+### Features
+
+* **nx-plugin-openapi:** add .babelrc to generated api libs ([c002a7c](https://github.com/trumbitta/nx-trumbitta/commit/c002a7c20b9089918aac22d49b7408a38343d145)), closes [#37](https://github.com/trumbitta/nx-trumbitta/issues/37)
+* **nx-plugin-openapi:** update to Nx v12.6.2 and revert unwanted [@angular](https://github.com/angular) devkit dep ([e028dc3](https://github.com/trumbitta/nx-trumbitta/commit/e028dc38e564ecba897ca971a92363350e1558db)), closes [#37](https://github.com/trumbitta/nx-trumbitta/issues/37)
+
 ### [1.5.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.5.0...v1.5.1) (2021-07-16)
 
 
