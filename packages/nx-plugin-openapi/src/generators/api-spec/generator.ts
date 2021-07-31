@@ -53,7 +53,7 @@ export default async function (tree: Tree, schema: ApiSpecGeneratorSchema) {
 
 function normalizeOptions(options: ApiSpecGeneratorSchema, tree: Tree): NormalizedSchema {
   const name = names(options.name).fileName;
-  const projectDirectory = options.directory ? `${names(options.name).fileName}/${name}` : name;
+  const projectDirectory = options.directory ? `${names(options.directory).fileName}/${name}` : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
   const workspaceLayout = readWorkspaceConfiguration(tree).workspaceLayout ?? { libsDir: 'libs' };
   const projectRoot = `${workspaceLayout.libsDir}/${projectDirectory}`;

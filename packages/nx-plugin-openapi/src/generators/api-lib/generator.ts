@@ -63,7 +63,7 @@ export default async function (tree: Tree, schema: ApiLibGeneratorSchema) {
 
 function normalizeOptions(host: Tree, options: ApiLibGeneratorSchema): NormalizedSchema {
   const name = names(options.name).fileName;
-  const projectDirectory = options.directory ? `${names(options.name).fileName}/${name}` : name;
+  const projectDirectory = options.directory ? `${names(options.directory).fileName}/${name}` : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
   const { libsDir, npmScope } = getWorkspaceLayout(host);
   const projectRoot = joinPathFragments(`${libsDir}/${projectDirectory}`);
