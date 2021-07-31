@@ -1,3 +1,10 @@
+### [1.6.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.6.0...v1.6.1) (2021-07-31)
+
+
+### Bug Fixes
+
+* **nx-plugin-openapi:** fix support for --directory option ([6fd54f0](https://github.com/trumbitta/nx-trumbitta/commit/6fd54f07b73dc2b44076e8aebd1e80e0e8d99668))
+
 ## [1.6.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.5.1...v1.6.0) (2021-07-30)
 
 
