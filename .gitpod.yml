@@ -1,0 +1,39 @@
+image:
+  file: .gitpod.Dockerfile
+
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - init: nvm use && npm i -g @nrwl/cli commitizen && npm i # runs during prebuild
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
+
+github:
+  prebuilds:
+    addComment: true
+    branches: true
+
+gitConfig:
+  alias.lol: log --graph --decorate --pretty=oneline --abbrev-commit
+  alias.lola: log --graph --decorate --pretty=oneline --abbrev-commit --all
+  color.ui: auto
+  color.branch.current: yellow reverse
+  color.branch.local: yellow
+  color.branch.remote: green
+  color.diff.meta: yellow bold
+  color.diff.frag: magenta bold
+  color.diff.old: red bold
+  color.diff.new: green bold
+  color.status.added: yellow
+  color.status.changed: green
+  color.status.untracked: cyan
+
+vscode:
+  extensions:
+    - 'esbenp.prettier-vscode'
+    - 'firsttris.vscode-jest-runner'
+    - '42crunch.vscode-openapi'
+    - 'redhat.vscode-yaml'
+    - 'dbaeumer.vscode-eslint'
