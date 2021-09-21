@@ -14,10 +14,10 @@ You can contribute new features, add or update docs, fix or submit new issues, s
 Well, go on and open a pull request!  
 But for me to feel comfortable accepting your code in my codebase, you'll need some tools:
 
-* Some way of beautifying your code with [Prettier](https://prettier.io/), using [the configuration file provided in this repository](.prettierrc)
-* An IDE / code editor with an active [EditorConfig](https://editorconfig.org/) extension, using [the configuration file provided in this repository](.editorconfig)
-* [Commitizen](https://github.com/commitizen/cz-cli#using-the-command-line-tool) for your commit messages
-* Node 12 (but this might change in the future), and I really need to find 5 minutes to add a `.nvmrc` to this repository. Please, open a PR if there's still none when you are reading this!
+- Some way of beautifying your code with [Prettier](https://prettier.io/), using [the configuration file provided in this repository](.prettierrc)
+- An IDE / code editor with an active [EditorConfig](https://editorconfig.org/) extension, using [the configuration file provided in this repository](.editorconfig)
+- [Commitizen](https://github.com/commitizen/cz-cli#using-the-command-line-tool) for your commit messages
+- [NVM](https://github.com/nvm-sh/nvm), so that you can run `nvm use` from the workspace root and be sure we are using the same Node version
 
 Then, do your thing and make sure you code doesn't break any test.
 
