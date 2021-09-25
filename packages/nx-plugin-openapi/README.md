@@ -33,13 +33,13 @@ Sources get auto-generated via [`openapi-generator-cli`](https://github.com/Open
 nx generate @trumbitta/nx-plugin-openapi:api-spec
 ```
 
-```sh
-? What name would you like to use? my-service-api-sp
-ec
-? Do you want a sample spec file? Yes
-CREATE libs/my-service-api-spec/src/my-service-api-spec.openapi.yml (18876 bytes)
-UPDATE workspace.json (1384 bytes)
-UPDATE nx.json (890 bytes)
+```
+✔ What name would you like to use? · api-spec
+✔ Do you want me to also create a sample spec file for you? (y/N) · true
+UPDATE package.json
+UPDATE workspace.json
+UPDATE nx.json
+CREATE libs/my-service-api-spec/src/my-service-api-spec.openapi.yml
 ```
 
 ### Create a lib for auto-generated docs
@@ -48,15 +48,22 @@ UPDATE nx.json (890 bytes)
 nx generate @trumbitta/nx-plugin-openapi:api-lib
 ```
 
-```sh
-? What name would you like to use? api-docs
-? What's the name of the lib containing the API spec file? api-spec
-? What's the path of the API spec file, starting from the lib root? src/api-spec.openapi.yml
-? Which OpenAPITool generator would you like to use? (Info: https://github.com/OpenAPITools/openapi-generator) html
-? Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (Info: https://openapi-generator.tech/docs/generators)
-CREATE libs/api-docs/README.md (1236 bytes)
-UPDATE workspace.json (1220 bytes)
-UPDATE nx.json (837 bytes)
+```
+✔ What name would you like to use? · api-docs
+✔ Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) · html
+✔ Is the API spec file published online? (y/N) · false
+✔ If it's online, what's the URL where I can get the API spec file from? · 
+✔ If it's online, which authorization headers do you need to add? · 
+✔ If it's local, what's the name of the lib containing the API spec file? · api-spec
+✔ If it's local, what's the path of the API spec file starting from the lib root? · src/api-spec.openapi.yml
+✔ Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) · 
+✔ Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals) · 
+
+UPDATE workspace.json
+UPDATE nx.json
+CREATE libs/api-docs/README.md
+CREATE libs/api-docs/.babelrc
+UPDATE tsconfig.base.json
 ```
 
 ### Create a lib for auto-generated client sources
@@ -65,16 +72,23 @@ UPDATE nx.json (837 bytes)
 nx generate @trumbitta/nx-plugin-openapi:api-lib
 ```
 
-```sh
-? What name would you like to use? api-fetch
-? What's the name of the lib containing the API spec file? api-spec
-? What's the path of the API spec file, starting from the lib root? src/api-spec.openapi.yml
-? Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) typescript-fetch
-? Do you want to specify any additional properties for the generator?
-key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) typescriptThreePlus=true,supportsES6=true
-CREATE libs/api-docs/README.md (1236 bytes)
-UPDATE workspace.json (1220 bytes)
-UPDATE nx.json (837 bytes)
+```
+✔ What name would you like to use? · api-fetch
+✔ Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) · typescript-fetch
+
+✔ Is the API spec file published online? (y/N) · false
+✔ If it's online, what's the URL where I can get the API spec file from? · 
+✔ If it's online, which authorization headers do you need to add? · 
+✔ If it's local, what's the name of the lib containing the API spec file? · api-spec
+✔ If it's local, what's the path of the API spec file starting from the lib root? · src/api-spec.openapi.yml
+✔ Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) · typescriptThreePlus=true,supportsES6=true
+✔ Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals) · 
+
+UPDATE workspace.json
+UPDATE nx.json
+CREATE libs/api-fetch/README.md
+CREATE libs/api-fetch/.babelrc
+UPDATE tsconfig.base.json
 ```
 
 ### Generate or update sources
@@ -83,6 +97,11 @@ Given the libs created in the examples above, then:
 
 ```sh
 nx run api-docs:generate-sources
+
+# Then you can simply serve it
+npx http-server libs/api-docs/src
+
+# Or you can configure a Nx serve target for it, or do whatever you want
 ```
 
 ```sh
