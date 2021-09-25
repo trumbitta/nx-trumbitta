@@ -5,12 +5,6 @@
 
 Keep your API spec files in libs, and auto-generate sources and docs.
 
-## Warning
-
-The plugin works, but the README is a bit outdated until I find the time for issue #17.
-
-In the meantime, you can still make use of it if you adapt what you read to what you see on screen!
-
 ## 🧐 What is it?
 
 It's a plugin for organizing OpenAPI spec files in libraries. You can then have other libraries for API SDKs, server stubs, or documentation, all auto-generated from the spec files.
@@ -52,12 +46,12 @@ nx generate @trumbitta/nx-plugin-openapi:api-lib
 ✔ What name would you like to use? · api-docs
 ✔ Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) · html
 ✔ Is the API spec file published online? (y/N) · false
-✔ If it's online, what's the URL where I can get the API spec file from? · 
-✔ If it's online, which authorization headers do you need to add? · 
+✔ If it's online, what's the URL where I can get the API spec file from? ·
+✔ If it's online, which authorization headers do you need to add? ·
 ✔ If it's local, what's the name of the lib containing the API spec file? · api-spec
 ✔ If it's local, what's the path of the API spec file starting from the lib root? · src/api-spec.openapi.yml
-✔ Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) · 
-✔ Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals) · 
+✔ Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) ·
+✔ Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals) ·
 
 UPDATE workspace.json
 UPDATE nx.json
@@ -77,12 +71,12 @@ nx generate @trumbitta/nx-plugin-openapi:api-lib
 ✔ Which OpenAPITool generator would you like to use? (https://github.com/OpenAPITools/openapi-generator) · typescript-fetch
 
 ✔ Is the API spec file published online? (y/N) · false
-✔ If it's online, what's the URL where I can get the API spec file from? · 
-✔ If it's online, which authorization headers do you need to add? · 
+✔ If it's online, what's the URL where I can get the API spec file from? ·
+✔ If it's online, which authorization headers do you need to add? ·
 ✔ If it's local, what's the name of the lib containing the API spec file? · api-spec
 ✔ If it's local, what's the path of the API spec file starting from the lib root? · src/api-spec.openapi.yml
 ✔ Do you want to specify any additional properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/generators) · typescriptThreePlus=true,supportsES6=true
-✔ Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals) · 
+✔ Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals) ·
 
 UPDATE workspace.json
 UPDATE nx.json
