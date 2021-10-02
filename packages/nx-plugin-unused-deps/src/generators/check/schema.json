@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Check",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "fix": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to remove the unused deps from the package.json file",
+      "alias": "f",
+      "x-prompt": "Do you want to also update the package.json file?"
+    },
+    "json": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to also log results into a JSON file",
+      "alias": "j",
+      "x-prompt": "Do you want to also log results into a JSON file?"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@trumbitta/nx-plugin-openapi",
+  "name": "@trumbitta/nx-plugin-unused-deps",
   "version": "0.0.0-semantically-released",
   "main": "src/index.js",
   "generators": "./generators.json",
@@ -7,5 +7,11 @@
   "license": "MIT",
   "peerDependencies": {
     "@nrwl/workspace": ">=12.8.0"
+  },
+  "files": [
+    "tools/scripts/post-install.js"
+  ],
+  "scripts": {
+    "postinstall": "node tools/scripts/post-install.js"
   }
 }
