@@ -27,6 +27,7 @@
         "main": "packages/nx-plugin-openapi/src/index.ts",
         "assets": [
           "packages/nx-plugin-openapi/*.md",
+          "packages/nx-plugin-openapi/LICENSE",
           {
             "input": "./packages/nx-plugin-openapi/src",
             "glob": "**/!(*.ts)",

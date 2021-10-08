@@ -28,6 +28,7 @@
         "main": "packages/nx-plugin-unused-deps/src/index.ts",
         "assets": [
           "packages/nx-plugin-unused-deps/*.md",
+          "packages/nx-plugin-unused-deps/LICENSE",
           {
             "input": "./packages/nx-plugin-unused-deps/src",
             "glob": "**/!(*.ts)",

@@ -9,6 +9,9 @@
     "@nrwl/workspace": ">=12.8.0"
   },
   "files": [
+    "src/**/*.*",
+    "executors.json",
+    "generators.json",
     "tools/scripts/post-install.js"
   ],
   "scripts": {
