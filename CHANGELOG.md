@@ -1,3 +1,10 @@
+### [1.7.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.7.0...v1.7.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* fix NPM packaging ([1ed7e3f](https://github.com/trumbitta/nx-trumbitta/commit/1ed7e3f2acb84d9b34df8330dcea60a455b8c360))
+
 ## [1.7.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.6.1...v1.7.0) (2021-10-08)
 
 
