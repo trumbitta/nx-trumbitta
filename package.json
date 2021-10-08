@@ -28,7 +28,8 @@
   },
   "private": true,
   "dependencies": {
-    "cross-spawn": "^7.0.3"
+    "cross-spawn": "^7.0.3",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

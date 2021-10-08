@@ -1,0 +1,56 @@
+{
+  "root": "packages/nx-plugin-unused-deps",
+  "sourceRoot": "packages/nx-plugin-unused-deps/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/nx-plugin-unused-deps/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nx-plugin-unused-deps"],
+      "options": {
+        "jestConfig": "packages/nx-plugin-unused-deps/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-plugin-unused-deps",
+        "tsConfig": "packages/nx-plugin-unused-deps/tsconfig.lib.json",
+        "packageJson": "packages/nx-plugin-unused-deps/package.json",
+        "main": "packages/nx-plugin-unused-deps/src/index.ts",
+        "assets": [
+          "packages/nx-plugin-unused-deps/*.md",
+          {
+            "input": "./packages/nx-plugin-unused-deps/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-plugin-unused-deps/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-plugin-unused-deps",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-plugin-unused-deps",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}

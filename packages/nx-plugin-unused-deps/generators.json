@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-plugin-unused-deps",
+  "version": "0.0.0-semantically-released",
+  "generators": {
+    "check": {
+      "factory": "./src/generators/check/generator",
+      "schema": "./src/generators/check/schema.json",
+      "description": "Look for unused deps in package.json"
+    }
+  }
+}
