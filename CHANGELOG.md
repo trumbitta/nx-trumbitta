@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.6.1...v1.7.0) (2021-10-08)
+
+
+### Features
+
+* **nx-plugin-unused-deps:** add plugin to check package.json for unused deps ([c9d9d32](https://github.com/trumbitta/nx-trumbitta/commit/c9d9d321d0f8dde18795555856cd0979e8c7f236))
+
 ### [1.6.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.6.0...v1.6.1) (2021-07-31)
 
 
