@@ -25,6 +25,7 @@ xdescribe('Command Runner Builder', () => {
       targetName: 'generate-sources',
       workspace: {
         version: 2,
+        npmScope: 'foo',
         projects: {
           proj: {
             root: '',
