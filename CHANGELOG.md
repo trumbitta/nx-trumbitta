@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.7.1...v1.8.0) (2021-10-22)
+
+
+### Features
+
+* **nx:** update to v13.0.1 ([1434e20](https://github.com/trumbitta/nx-trumbitta/commit/1434e20f9340d5f3a96e35155e2b60ea69859f93))
+
 ### [1.7.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.7.0...v1.7.1) (2021-10-08)
 
 
