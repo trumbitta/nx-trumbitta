@@ -5,8 +5,5 @@
     "nx-plugin-openapi-e2e": "packages/nx-plugin-openapi-e2e",
     "nx-plugin-unused-deps": "packages/nx-plugin-unused-deps",
     "nx-plugin-unused-deps-e2e": "packages/nx-plugin-unused-deps-e2e"
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
   }
 }

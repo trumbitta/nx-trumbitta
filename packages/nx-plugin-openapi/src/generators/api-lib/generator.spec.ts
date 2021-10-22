@@ -1,5 +1,5 @@
 // Nrwl
-import { Tree, readJson, updateJson, WorkspaceJsonConfiguration, NxJsonConfiguration } from '@nrwl/devkit';
+import { Tree, readJson, updateJson, readProjectConfiguration } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 // Generator
@@ -60,30 +60,26 @@ describe('api-lib schematic', () => {
         sourceSpecUrl,
       };
 
-      it('should update workspace.json', async () => {
+      it('should create or update project configuration', async () => {
         await libraryGenerator(appTree, remoteSchema);
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: remoteSchema.generator,
           sourceSpecPathOrUrl: sourceSpecUrl,
         };
-        const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
+        const { root, targets } = readProjectConfiguration(appTree, defaultSchema.name);
 
-        expect(workspaceJson.projects[remoteSchema.name].root).toEqual(`libs/${remoteSchema.name}`);
-        expect(workspaceJson.projects[remoteSchema.name].targets['generate-sources']).toMatchObject({
+        expect(root).toEqual(`libs/${remoteSchema.name}`);
+        expect(targets['generate-sources']).toMatchObject({
           executor: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
           options,
         });
       });
 
-      it('should NOT add implicitDependencies to nx.json', async () => {
+      it('should NOT add implicitDependencies to project configuration', async () => {
         await libraryGenerator(appTree, remoteSchema);
-        const nxJson = readJson<NxJsonConfiguration>(appTree, '/nx.json');
+        const { implicitDependencies } = readProjectConfiguration(appTree, defaultSchema.name);
 
-        expect(nxJson.projects).toEqual({
-          [remoteSchema.name]: {
-            tags: [],
-          },
-        });
+        expect(implicitDependencies).toBeFalsy();
       });
     });
 
@@ -96,30 +92,24 @@ describe('api-lib schematic', () => {
       };
       it('should update workspace.json', async () => {
         await libraryGenerator(appTree, localSchema);
-
-        const workspaceJson = readJson<WorkspaceJsonConfiguration>(appTree, '/workspace.json');
         const options: GenerateApiLibSourcesExecutorSchema = {
           generator: localSchema.generator,
           sourceSpecPathOrUrl: ['libs', localSchema.sourceSpecLib, localSchema.sourceSpecFileRelativePath].join('/'),
         };
+        const { root, targets } = readProjectConfiguration(appTree, defaultSchema.name);
 
-        expect(workspaceJson.projects[localSchema.name].root).toEqual(`libs/${localSchema.name}`);
-        expect(workspaceJson.projects[localSchema.name].targets['generate-sources']).toMatchObject({
+        expect(root).toEqual(`libs/${localSchema.name}`);
+        expect(targets['generate-sources']).toMatchObject({
           executor: '@trumbitta/nx-plugin-openapi:generate-api-lib-sources',
           options,
         });
       });
 
-      it('should add implicitDependencies to nx.json', async () => {
+      it('should add implicitDependencies to project configuration', async () => {
         await libraryGenerator(appTree, localSchema);
-        const nxJson = readJson<NxJsonConfiguration>(appTree, '/nx.json');
+        const { implicitDependencies } = readProjectConfiguration(appTree, defaultSchema.name);
 
-        expect(nxJson.projects).toEqual({
-          [localSchema.name]: {
-            tags: [],
-            implicitDependencies: [localSchema.sourceSpecLib],
-          },
-        });
+        expect(implicitDependencies).toEqual([localSchema.sourceSpecLib]);
       });
     });
   });
