@@ -1,3 +1,10 @@
+### [1.9.2](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.1...v1.9.2) (2021-10-30)
+
+
+### Bug Fixes
+
+* **open-in-gitpod:** tweak TS config ([e73060e](https://github.com/trumbitta/nx-trumbitta/commit/e73060e703e3e6ef5fa22e2f70e8f32c602603b1))
+
 ### [1.9.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.0...v1.9.1) (2021-10-30)
 
 
