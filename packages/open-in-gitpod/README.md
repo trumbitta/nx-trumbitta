@@ -7,7 +7,7 @@ Open the current repository in Gitpod.
 
 ## 🧐 What is it?
 
-It's a simple command line utility to open a repository you are working on, on Gitpod.
+It's a simple command line utility to open a local repository you are working on, in Gitpod.
 
 ## 🧰 Usage
 
@@ -15,5 +15,5 @@ It's a simple command line utility to open a repository you are working on, on G
 # Inside a local repository that exists online.
 # E.g. https://github.com/trumbitta/nx-trumbitta
 
-npx open-in-gitpodd
+npx open-in-gitpod
 ```

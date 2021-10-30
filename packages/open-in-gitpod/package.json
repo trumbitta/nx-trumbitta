@@ -1,5 +1,5 @@
 {
-  "name": "@trumbitta/open-in-gitpod",
+  "name": "open-in-gitpod",
   "version": "0.0.0-semantically-released",
   "main": "src/index.js",
   "keywords": [
