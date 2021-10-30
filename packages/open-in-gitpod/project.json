@@ -1,0 +1,34 @@
+{
+  "root": "packages/open-in-gitpod",
+  "sourceRoot": "packages/open-in-gitpod/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/open-in-gitpod/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/open-in-gitpod"],
+      "options": {
+        "jestConfig": "packages/open-in-gitpod/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/open-in-gitpod",
+        "tsConfig": "packages/open-in-gitpod/tsconfig.lib.json",
+        "packageJson": "packages/open-in-gitpod/package.json",
+        "main": "packages/open-in-gitpod/src/index.ts",
+        "assets": ["packages/open-in-gitpod/*.md", "packages/nx-plugin-openapi/LICENSE"]
+      }
+    }
+  },
+  "tags": ["scope:open-in-gitpod"]
+}

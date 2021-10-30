@@ -16,5 +16,9 @@
   ],
   "scripts": {
     "postinstall": "node tools/scripts/post-install.js"
-  }
+  },
+  "keywords": [
+    "Nx",
+    "Unused dependencies"
+  ]
 }
