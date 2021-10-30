@@ -1,3 +1,10 @@
+## [1.9.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.8.0...v1.9.0) (2021-10-30)
+
+
+### Features
+
+* **open-in-gitpod:** add CLI to open current local repo in Gitpod ([9cd931a](https://github.com/trumbitta/nx-trumbitta/commit/9cd931ad238b4a3282e5776c4c71f1714c2192cd))
+
 ## [1.8.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.7.1...v1.8.0) (2021-10-22)
 
 
