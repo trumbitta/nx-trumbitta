@@ -29,6 +29,8 @@
   "private": true,
   "dependencies": {
     "cross-spawn": "^7.0.3",
+    "git-utils": "^5.7.3",
+    "open": "^8.4.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

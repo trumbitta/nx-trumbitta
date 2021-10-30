@@ -7,5 +7,9 @@
   "license": "MIT",
   "peerDependencies": {
     "@nrwl/workspace": ">=13.0.0"
-  }
+  },
+  "keywords": [
+    "Nx",
+    "OpenAPI"
+  ]
 }

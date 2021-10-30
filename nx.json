@@ -38,6 +38,6 @@
     ]
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/node"
   }
 }
