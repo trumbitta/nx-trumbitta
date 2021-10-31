@@ -10,6 +10,6 @@ module.exports = {
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleFileExtensions: ['ts', 'tsx', 'json', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/open-in-gitpod',
 };

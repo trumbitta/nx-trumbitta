@@ -29,7 +29,7 @@
   "private": true,
   "dependencies": {
     "cross-spawn": "^7.0.3",
-    "git-utils": "^5.7.3",
+    "nodegit": "^0.27.0",
     "open": "^8.4.0",
     "tslib": "^2.0.0"
   },
@@ -54,6 +54,7 @@
     "@types/cross-spawn": "^6.0.2",
     "@types/jest": "27.0.2",
     "@types/node": "14.14.33",
+    "@types/nodegit": "^0.27.3",
     "@typescript-eslint/eslint-plugin": "~4.28.5",
     "@typescript-eslint/parser": "~4.28.5",
     "conventional-changelog-conventionalcommits": "^4.5.0",

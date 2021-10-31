@@ -1,4 +1,5 @@
-import { gitpodifyUrl, parseBranchRef, parseOriginUrl } from './utils';
+// Utils
+import { gitpodifyUrl, parseOriginUrl } from './utils';
 
 describe('utils: ', () => {
   const parsedUrl = 'https://github.com/foo/bar/baz';
@@ -10,16 +11,6 @@ describe('utils: ', () => {
 
     it('should work with a HTTPS git url', () => {
       expect(parseOriginUrl('https://github.com/foo/bar/baz')).toEqual(parsedUrl);
-    });
-  });
-
-  describe('parseBranchRef: ', () => {
-    it('should extract the branch name from the complete ref', () => {
-      expect(parseBranchRef('refs/heads/main')).toEqual('main');
-    });
-
-    it('should be resilient when the branch is null', () => {
-      expect(parseBranchRef(null)).toEqual('');
     });
   });
 

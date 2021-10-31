@@ -1,16 +1,22 @@
-import { join } from 'path';
-
+// Third Parties
 import open from 'open';
-import { open as gitOpen } from 'git-utils';
+import { Repository } from 'nodegit';
 
-import { gitpodifyUrl, parseBranchRef, parseOriginUrl } from './utils';
+// Utils
+import { gitpodifyUrl, parseOriginUrl } from './utils';
 
 export const cli = async () => {
-  const repository = gitOpen(join(__dirname, ''));
-  const branch = repository.getUpstreamBranch();
-  const origin = repository.getConfigValue('remote.origin.url');
+  const thisRepoPath = process.cwd();
+  const repository = await Repository.open(thisRepoPath);
 
-  const url = `${parseOriginUrl(origin)}/${parseBranchRef(branch)}`;
-  console.log('open-in-gitpod:', gitpodifyUrl(url));
-  await open(gitpodifyUrl(url));
+  const origin = (await repository.getRemote('origin')).url();
+
+  const branchReference = await repository.getCurrentBranch();
+  const branchName = branchReference.shorthand();
+
+  const url = `${parseOriginUrl(origin)}/${branchName}`;
+  const gitpodifiedUrl = gitpodifyUrl(url);
+
+  console.log('open-in-gitpod:', gitpodifiedUrl);
+  await open(gitpodifiedUrl);
 };
