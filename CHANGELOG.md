@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.3...v1.10.0) (2021-10-31)
+
+
+### Features
+
+* **open-in-gitpod:** replace nodegit with local git ([6b8d2aa](https://github.com/trumbitta/nx-trumbitta/commit/6b8d2aa095f9f9d6ee7d751a67c7d14171b06121)), closes [#56](https://github.com/trumbitta/nx-trumbitta/issues/56)
+
 ### [1.9.3](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.2...v1.9.3) (2021-10-31)
 
 
