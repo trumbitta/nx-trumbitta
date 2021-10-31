@@ -1,6 +1,8 @@
 // Third Parties
 import open from 'open';
-import { Repository } from 'nodegit';
+
+// Utils
+import { getCurrentBranchName } from './git-utils';
 
 import { cli } from './open-in-gitpod';
 
@@ -11,10 +13,7 @@ jest.mock('open', () => ({
 
 describe('open-in-gitpod: ', () => {
   it('should work', async () => {
-    const thisRepoPath = process.cwd();
-    const repository = await Repository.open(thisRepoPath);
-    const branchReference = await repository.getCurrentBranch();
-    const branchName = branchReference.shorthand();
+    const branchName = getCurrentBranchName();
 
     await cli();
 
