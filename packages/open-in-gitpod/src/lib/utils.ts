@@ -8,10 +8,6 @@ export const parseOriginUrl = (origin: string): string => {
   return url;
 };
 
-export const parseBranchRef = (branch: string | null): string => {
-  return branch ? branch.split('/').slice(-1)[0] : '';
-};
-
 export const gitpodifyUrl = (url: string): string => {
   return `https://gitpod.io/#${url}`;
 };
