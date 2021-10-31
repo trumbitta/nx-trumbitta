@@ -29,7 +29,6 @@
   "private": true,
   "dependencies": {
     "cross-spawn": "^7.0.3",
-    "nodegit": "^0.27.0",
     "open": "^8.4.0",
     "tslib": "^2.0.0"
   },
