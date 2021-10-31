@@ -1,3 +1,10 @@
+### [1.9.3](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.2...v1.9.3) (2021-10-31)
+
+
+### Bug Fixes
+
+* **open-in-gitpod:** replace git-utils with nodegit ([ec2edd0](https://github.com/trumbitta/nx-trumbitta/commit/ec2edd03c81dc0bc104ee7e8de864950f626ac0e)), closes [#54](https://github.com/trumbitta/nx-trumbitta/issues/54)
+
 ### [1.9.2](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.1...v1.9.2) (2021-10-30)
 
 
