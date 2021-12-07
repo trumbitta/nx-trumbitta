@@ -1,4 +1,4 @@
-# Look for unused NPM dependencies in a Nx monorepo
+# Open in Gitpod
 
 [![NPM Version](https://badge.fury.io/js/open-in-gitpod.svg)](https://www.npmjs.com/open-in-gitpod)
 [![License](https://img.shields.io/npm/l/open-in-gitpod)]()
