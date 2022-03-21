@@ -3,7 +3,7 @@ image:
 
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: nvm use && npm i -g @nrwl/cli commitizen && npm i # runs during prebuild
+  - init: nvm use && npm i -g nx commitizen && npm i # runs during prebuild
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
