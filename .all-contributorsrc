@@ -23,6 +23,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "joeflateau",
+      "name": "Joe Flateau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/643331?v=4",
+      "profile": "http://joeflateau.net",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
