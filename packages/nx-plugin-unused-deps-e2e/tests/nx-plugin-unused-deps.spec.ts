@@ -38,8 +38,6 @@ describe('nx-plugin-unused-deps', () => {
     expect(stdout).toContain('jest');
     expect(stdout).not.toContain('express');
     expect(stdout).not.toContain('@types/express');
-
-    console.log(stdout);
   }, 120000);
 
   describe('--json', () => {
