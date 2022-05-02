@@ -19,6 +19,12 @@ describe('nx-plugin-unused-deps', () => {
     await runCommandAsync('npm i react express; npm i -D jest @types/express');
     await runNxCommandAsync('generate @nrwl/node:app --name=app');
     await runCommandAsync(`npm remove @trumbitta/nx-plugin-unused-deps`);
+
+    /**
+     * install from pack rather than installing from the directory
+     * otherwise npm symlinks that directory which causes nx to generate
+     * a dependency graph of this monorepo rather than of our test project
+     */
     await runCommandAsync(`npm install $(npm pack ${appRootPath}/${distPath} | tail -1)`);
     updateFile('./apps/app/src/main.ts', `import * as express from "express"; express();`);
   }, 120000);
