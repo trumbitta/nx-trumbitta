@@ -20,12 +20,22 @@ interface PackageJson {
 }
 
 export default async function (tree: Tree, options: CheckGeneratorSchema) {
-  const packageRecord: PackageRecord = await checkDeps();
+  const nxGraphDependencies: PackageRecord = await checkDeps();
   const packageJson = readJson<PackageJson>(tree, 'package.json');
   const jsonFile = `.nx-plugin-unused-deps.json`;
 
-  const packageIsNotDependedOn = (depName: string) =>
-    !packageRecord[`npm:${depName}`] && !packageRecord[`npm:${depName.replace('@types/', '')}`];
+  const packageIsNotDependedOn = (depName: string) => {
+    if (depName.startsWith('@types/')) {
+      // for @types/ packages, we actually want to check if the underlying package is depended on
+      // ie: "@types/express" is depended on if "express" is depended on
+      depName = depName.replace('@types/', '');
+    }
+
+    const isDependedOn = nxGraphDependencies[`npm:${depName}`] != null;
+
+    return !isDependedOn;
+  };
+
   const dependencies: PackageJsonDeps = {
     dependencies: Object.keys(packageJson.dependencies).filter(packageIsNotDependedOn),
     devDependencies: Object.keys(packageJson.devDependencies).filter(packageIsNotDependedOn),
