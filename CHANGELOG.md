@@ -1,3 +1,12 @@
+### [1.10.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.10.0...v1.10.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* **nx-plugin-unused-deps:** consider @types/X to be depended on if X is depended on ([88bfa11](https://github.com/trumbitta/nx-trumbitta/commit/88bfa11ceb678272cb368ec51546d0c9a60b5250))
+* **nx-plugin-unused-deps-e2e:** add a comment about why tests need to install package from a pack ([834a663](https://github.com/trumbitta/nx-trumbitta/commit/834a6639845b973c336432f68fe7e84e27516b1a))
+* **nx-plugin-unused-deps-e2e:** remove console.log ([0f4986e](https://github.com/trumbitta/nx-trumbitta/commit/0f4986edd391238ec97583aec0e1ead90b063bb9))
+
 ## [1.10.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.9.3...v1.10.0) (2021-10-31)
 
 
