@@ -4,8 +4,8 @@ import {
   readJson,
   runCommandAsync,
   runNxCommandAsync,
+  updateFile,
 } from '@nrwl/nx-plugin/testing';
-
 // Devkit
 import { appRootPath } from '@nrwl/tao/src/utils/app-root';
 
@@ -16,13 +16,23 @@ describe('nx-plugin-unused-deps', () => {
   beforeAll(async () => {
     ensureNxProject(plugin, distPath);
 
-    await runCommandAsync('npm i react; npm i -D jest');
+    await runCommandAsync('npm i react express; npm i -D jest @types/express');
+    await runNxCommandAsync('generate @nrwl/node:app --name=app');
+    await runCommandAsync(`npm remove @trumbitta/nx-plugin-unused-deps`);
+
+    /**
+     * install from pack rather than installing from the directory
+     * otherwise npm symlinks that directory which causes nx to generate
+     * a dependency graph of this monorepo rather than of our test project
+     */
+    await runCommandAsync(`npm install $(npm pack ${appRootPath}/${distPath} | tail -1)`);
+    updateFile('./apps/app/src/main.ts', `import * as express from "express"; express();`);
   }, 120000);
 
   // IDK why this stopped working
   it.skip('should display an info message at postinstall', async () => {
     await runCommandAsync(`npm remove @trumbitta/nx-plugin-unused-deps`);
-    const { stdout } = await runCommandAsync(`npm i file:${appRootPath}/${distPath}`);
+    const { stdout } = await runCommandAsync(`npm install $(npm pack ${appRootPath}/${distPath} | tail -1)`);
 
     expect(stdout).toContain('$ nx generate @trumbitta/nx-plugin-unused-deps:check');
   }, 120000);
@@ -32,6 +42,8 @@ describe('nx-plugin-unused-deps', () => {
 
     expect(stdout).toContain('react');
     expect(stdout).toContain('jest');
+    expect(stdout).not.toContain('express');
+    expect(stdout).not.toContain('@types/express');
   }, 120000);
 
   describe('--json', () => {
