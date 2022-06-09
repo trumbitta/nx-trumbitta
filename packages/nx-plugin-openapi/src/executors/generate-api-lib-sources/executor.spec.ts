@@ -1,24 +1,27 @@
-// Schema
+import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
+import { existsSync } from 'fs';
+import executor from './executor';
 import { GenerateApiLibSourcesExecutorSchema } from './schema';
 
-import executor from './executor';
-
-import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
-
-// Disabling this until I figure out how to test it
-// Probably childProcess should be mocked
-// Probably should ckeck openapi params too
-xdescribe('Command Runner Builder', () => {
-  let context: ExecutorContext;
+describe('Command Runner Builder', () => {
+  let context: (dir: string) => ExecutorContext;
   let schema: GenerateApiLibSourcesExecutorSchema;
+  let dockerSchema: GenerateApiLibSourcesExecutorSchema;
 
   beforeEach(async () => {
     schema = {
       generator: 'typescript-fetch',
-      sourceSpecPathOrUrl: '',
+      sourceSpecPathOrUrl:
+        './packages/nx-plugin-openapi/src/generators/api-spec/files/src/__name__.openapi.yml__tmpl__',
+    };
+    dockerSchema = {
+      generator: 'typescript-fetch',
+      sourceSpecPathOrUrl:
+        './packages/nx-plugin-openapi/src/generators/api-spec/files/src/__name__.openapi.yml__tmpl__',
+      useDockerBuild: true,
     };
 
-    context = {
+    context = (dir: string) => ({
       root: '/root',
       cwd: '/root',
       projectName: 'proj',
@@ -29,18 +32,28 @@ xdescribe('Command Runner Builder', () => {
         projects: {
           proj: {
             root: '',
-            sourceRoot: 'src',
+            sourceRoot: `./tmp/src/${dir}`,
             targets: {},
           },
         },
       },
       isVerbose: false,
-    };
+    });
   });
 
   it('can run', async () => {
-    const { success } = await executor(schema, context);
+    jest.setTimeout(30_000);
+    const { success } = await executor(schema, context('local'));
     // Expect that it succeeded.
     expect(success).toBe(true);
+    expect(existsSync(`./tmp/src/local/index.ts`)).toBe(true);
+  });
+
+  it('can run in docker', async () => {
+    jest.setTimeout(30_000);
+    const { success } = await executor(dockerSchema, context('docker'));
+    // Expect that it succeeded.
+    expect(success).toBe(true);
+    expect(existsSync(`./tmp/src/docker/index.ts`)).toBe(true);
   });
 });
