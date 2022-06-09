@@ -1,6 +1,6 @@
 import { ExecutorContext, logger } from '@nrwl/devkit';
 import { spawn } from 'cross-spawn';
-import { mkdir } from 'fs/promises';
+import { mkdirSync } from 'fs';
 import { deleteOutputDir } from '../../utils/delete-output-dir';
 import { GenerateApiLibSourcesExecutorSchema } from './schema';
 
@@ -41,7 +41,7 @@ async function generateSources(
   typeMappings: string,
   outputDir: string,
 ): Promise<number> {
-  await mkdir(outputDir, { recursive: true });
+  mkdirSync(outputDir, { recursive: true });
 
   return new Promise((resolve, reject) => {
     const { command, args } = useDockerBuild
