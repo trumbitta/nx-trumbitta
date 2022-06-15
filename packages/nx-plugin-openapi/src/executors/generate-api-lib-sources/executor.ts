@@ -1,15 +1,7 @@
-// Devkit
-import { logger, ExecutorContext } from '@nrwl/devkit';
-
-// Third Parties
-import { from, of } from 'rxjs';
-import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { ExecutorContext, logger } from '@nrwl/devkit';
 import { spawn } from 'cross-spawn';
-
-// Utils
+import { mkdirSync } from 'fs';
 import { deleteOutputDir } from '../../utils/delete-output-dir';
-
-// Schema
 import { GenerateApiLibSourcesExecutorSchema } from './schema';
 
 export default async function runExecutor(
@@ -19,40 +11,28 @@ export default async function runExecutor(
   const outputDir = context.workspace.projects[context.projectName].sourceRoot;
   const root = context.root;
 
-  return of(outputDir)
-    .pipe(
-      tap((outputDir) => {
-        logger.info(`Deleting outputDir ${outputDir}...`);
+  logger.info(`Deleting outputDir ${outputDir}...`);
 
-        deleteOutputDir(root, outputDir);
+  deleteOutputDir(root, outputDir);
 
-        logger.info(`Done deleting outputDir ${outputDir}.`);
-      }),
-      switchMap((outputDir) =>
-        from(
-          generateSources(
-            options.sourceSpecPathOrUrl,
-            options.sourceSpecUrlAuthorizationHeaders,
-            options.generator,
-            options.additionalProperties,
-            options.globalProperties,
-            options.typeMappings,
-            outputDir,
-          ),
-        ).pipe(
-          map(() => ({ success: true })),
-          catchError((error) => {
-            logger.error(error);
-            return of(error);
-          }),
-        ),
-      ),
-      catchError((error) => of(error)),
-    )
-    .toPromise<{ success: boolean }>();
+  logger.info(`Done deleting outputDir ${outputDir}.`);
+
+  await generateSources(
+    options.useDockerBuild ?? false,
+    options.sourceSpecPathOrUrl,
+    options.sourceSpecUrlAuthorizationHeaders,
+    options.generator,
+    options.additionalProperties,
+    options.globalProperties,
+    options.typeMappings,
+    outputDir,
+  );
+
+  return { success: true };
 }
 
-function generateSources(
+async function generateSources(
+  useDockerBuild: boolean,
   apiSpecPathOrUrl: string,
   apiSpecAuthorizationHeaders: string,
   generator: string,
@@ -61,26 +41,35 @@ function generateSources(
   typeMappings: string,
   outputDir: string,
 ): Promise<number> {
+  mkdirSync(outputDir, { recursive: true });
+
   return new Promise((resolve, reject) => {
-    const args = ['generate', '-i', apiSpecPathOrUrl, '-g', generator, '-o', outputDir];
+    const { command, args } = useDockerBuild
+      ? {
+          command: 'docker',
+          args: ['run', '--rm', '-v', `${process.cwd()}:/local`, '-w', '/local', 'openapitools/openapi-generator-cli'],
+        }
+      : { command: 'npx', args: ['openapi-generator-cli'] };
+
+    args.push('generate', '-i', apiSpecPathOrUrl, '-g', generator, '-o', outputDir);
 
     if (additionalProperties) {
-      args.push(...['--additional-properties', additionalProperties]);
+      args.push('--additional-properties', additionalProperties);
     }
 
     if (apiSpecAuthorizationHeaders) {
-      args.push(...['--auth', apiSpecAuthorizationHeaders]);
+      args.push('--auth', apiSpecAuthorizationHeaders);
     }
 
     if (typeMappings) {
-      args.push(...['--type-mappings', typeMappings]);
+      args.push('--type-mappings', typeMappings);
     }
 
     if (globalProperties) {
-      args.push(...['--global-property', globalProperties]);
+      args.push('--global-property', globalProperties);
     }
 
-    const child = spawn('node_modules/.bin/openapi-generator-cli', args);
+    const child = spawn(command, args);
 
     child.on('error', (err) => {
       reject(err);

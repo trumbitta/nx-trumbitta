@@ -5,6 +5,11 @@
   "description": "Generate API lib source files via @openapitools/openapi-generator-cli",
   "type": "object",
   "properties": {
+    "useDockerBuild": {
+      "type": "boolean",
+      "description": "Should the build occur inside of a docker container",
+      "default": false
+    },
     "generator": {
       "type": "string",
       "description": "The OpenAPITools generator you want to use",

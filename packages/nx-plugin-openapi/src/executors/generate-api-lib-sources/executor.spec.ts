@@ -1,24 +1,31 @@
-// Schema
-import { GenerateApiLibSourcesExecutorSchema } from './schema';
-
-import executor from './executor';
+jest.mock('child_process');
 
 import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
+import { mockSpawn } from '../../test/mockSpawn';
+import executor from './executor';
+import { GenerateApiLibSourcesExecutorSchema } from './schema';
 
-// Disabling this until I figure out how to test it
-// Probably childProcess should be mocked
-// Probably should ckeck openapi params too
-xdescribe('Command Runner Builder', () => {
-  let context: ExecutorContext;
+beforeEach(() => {
+  jest.resetAllMocks();
+});
+
+describe('Command Runner Builder', () => {
+  let context: (dir: string) => ExecutorContext;
   let schema: GenerateApiLibSourcesExecutorSchema;
+  let dockerSchema: GenerateApiLibSourcesExecutorSchema;
 
   beforeEach(async () => {
     schema = {
       generator: 'typescript-fetch',
-      sourceSpecPathOrUrl: '',
+      sourceSpecPathOrUrl: 'open-api-spec.yml',
+    };
+    dockerSchema = {
+      generator: 'typescript-fetch',
+      sourceSpecPathOrUrl: 'open-api-spec.yml',
+      useDockerBuild: true,
     };
 
-    context = {
+    context = (dir: string) => ({
       root: '/root',
       cwd: '/root',
       projectName: 'proj',
@@ -29,18 +36,50 @@ xdescribe('Command Runner Builder', () => {
         projects: {
           proj: {
             root: '',
-            sourceRoot: 'src',
+            sourceRoot: `./tmp/src/${dir}`,
             targets: {},
           },
         },
       },
       isVerbose: false,
-    };
+    });
   });
 
   it('can run', async () => {
-    const { success } = await executor(schema, context);
-    // Expect that it succeeded.
+    const allSpawned = mockSpawn({
+      command: 'npx',
+      args: [
+        'openapi-generator-cli',
+        'generate',
+        ...['-i', 'open-api-spec.yml'],
+        ...['-g', 'typescript-fetch'],
+        ...['-o', './tmp/src/local'],
+      ],
+      exitCode: 0,
+    });
+    const { success } = await executor(schema, context('local'));
     expect(success).toBe(true);
+    allSpawned();
+  });
+
+  it('can run in docker', async () => {
+    const allSpawned = mockSpawn({
+      command: 'docker',
+      args: [
+        'run',
+        '--rm',
+        ...['-v', `${process.cwd()}:/local`],
+        ...['-w', '/local'],
+        'openapitools/openapi-generator-cli',
+        'generate',
+        ...['-i', 'open-api-spec.yml'],
+        ...['-g', 'typescript-fetch'],
+        ...['-o', './tmp/src/docker'],
+      ],
+      exitCode: 0,
+    });
+    const { success } = await executor(dockerSchema, context('docker'));
+    expect(success).toBe(true);
+    allSpawned();
   });
 });

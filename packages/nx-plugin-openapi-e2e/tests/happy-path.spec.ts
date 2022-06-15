@@ -1,5 +1,6 @@
 // Nrwl
 import { ensureNxProject, runNxCommand, uniq } from '@nrwl/nx-plugin/testing';
+import { existsSync } from 'fs';
 
 describe('Happy-path', () => {
   let apiSpecLibName: string;
@@ -32,6 +33,29 @@ describe('Happy-path', () => {
 
     // TODO devise proper expectations
     expect(execute).toContain('Done deleting outputDir');
+    expect(existsSync(`./tmp/nx-e2e/proj/libs/${apiLibLibName}/src/index.ts`)).toBe(true);
+  }, 120000);
+
+  it('should work with docker', () => {
+    runNxCommand(`generate @trumbitta/nx-plugin-openapi:api-spec ${apiSpecLibName} --withSample`);
+
+    runNxCommand(
+      [
+        'generate',
+        '@trumbitta/nx-plugin-openapi:api-lib',
+        apiLibLibName,
+        '--useDockerBuild=true',
+        '--generator=typescript-fetch',
+        `--sourceSpecLib=${apiSpecLibName}`,
+        `--sourceSpecFileRelativePath=src/${apiSpecLibName}.openapi.yml`,
+      ].join(' '),
+    );
+
+    const execute = runNxCommand(`run ${apiLibLibName}:generate-sources`);
+
+    // TODO devise proper expectations
+    expect(execute).toContain('Done deleting outputDir');
+    expect(existsSync(`./tmp/nx-e2e/proj/libs/${apiLibLibName}/src/index.ts`)).toBe(true);
   }, 120000);
 
   it('should work with a remote spec', () => {

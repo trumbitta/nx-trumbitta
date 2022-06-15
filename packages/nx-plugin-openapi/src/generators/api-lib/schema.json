@@ -15,6 +15,12 @@
       "x-prompt": "What name would you like to use?",
       "pattern": "^[a-zA-Z]{1}.*$"
     },
+    "useDockerBuild": {
+      "type": "boolean",
+      "description": "Should the build occur inside of a docker container",
+      "default": false,
+      "x-prompt": "Should the build occur inside of a docker container?"
+    },
     "generator": {
       "type": "string",
       "description": "The generator this lib will use to build an API SDK (e.g.: typescript-fetch)",
