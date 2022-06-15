@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.10.1...v1.11.0) (2022-06-15)
+
+
+### Features
+
+* **nx-plugin-openapi:** add an option to run generator in docker container ([#63](https://github.com/trumbitta/nx-trumbitta/issues/63)) ([870a20f](https://github.com/trumbitta/nx-trumbitta/commit/870a20f0d36d48e7d7f6bab68d64a780ce70673f))
+
 ### [1.10.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.10.0...v1.10.1) (2022-05-18)
 
 
