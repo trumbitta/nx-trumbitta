@@ -1,7 +1,13 @@
+jest.mock('child_process');
+
 import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
-import { existsSync } from 'fs';
+import { mockSpawn } from '../../test/mockSpawn';
 import executor from './executor';
 import { GenerateApiLibSourcesExecutorSchema } from './schema';
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});
 
 describe('Command Runner Builder', () => {
   let context: (dir: string) => ExecutorContext;
@@ -11,13 +17,11 @@ describe('Command Runner Builder', () => {
   beforeEach(async () => {
     schema = {
       generator: 'typescript-fetch',
-      sourceSpecPathOrUrl:
-        './packages/nx-plugin-openapi/src/generators/api-spec/files/src/__name__.openapi.yml__tmpl__',
+      sourceSpecPathOrUrl: 'open-api-spec.yml',
     };
     dockerSchema = {
       generator: 'typescript-fetch',
-      sourceSpecPathOrUrl:
-        './packages/nx-plugin-openapi/src/generators/api-spec/files/src/__name__.openapi.yml__tmpl__',
+      sourceSpecPathOrUrl: 'open-api-spec.yml',
       useDockerBuild: true,
     };
 
@@ -42,18 +46,40 @@ describe('Command Runner Builder', () => {
   });
 
   it('can run', async () => {
-    jest.setTimeout(30_000);
+    const allSpawned = mockSpawn({
+      command: 'npx',
+      args: [
+        'openapi-generator-cli',
+        'generate',
+        ...['-i', 'open-api-spec.yml'],
+        ...['-g', 'typescript-fetch'],
+        ...['-o', './tmp/src/local'],
+      ],
+      exitCode: 0,
+    });
     const { success } = await executor(schema, context('local'));
-    // Expect that it succeeded.
     expect(success).toBe(true);
-    expect(existsSync(`./tmp/src/local/index.ts`)).toBe(true);
+    allSpawned();
   });
 
   it('can run in docker', async () => {
-    jest.setTimeout(30_000);
+    const allSpawned = mockSpawn({
+      command: 'docker',
+      args: [
+        'run',
+        '--rm',
+        ...['-v', `${process.cwd()}:/local`],
+        ...['-w', '/local'],
+        'openapitools/openapi-generator-cli',
+        'generate',
+        ...['-i', 'open-api-spec.yml'],
+        ...['-g', 'typescript-fetch'],
+        ...['-o', './tmp/src/docker'],
+      ],
+      exitCode: 0,
+    });
     const { success } = await executor(dockerSchema, context('docker'));
-    // Expect that it succeeded.
     expect(success).toBe(true);
-    expect(existsSync(`./tmp/src/docker/index.ts`)).toBe(true);
+    allSpawned();
   });
 });
