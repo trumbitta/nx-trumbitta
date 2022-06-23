@@ -17,7 +17,7 @@ npm install -D @trumbitta/nx-plugin-openapi
 
 ### Prerequisites
 
-Sources get auto-generated via [`openapi-generator-cli`](https://github.com/OpenAPITools/openapi-generator-cli), so you'll need Java 8 installed.
+Sources get auto-generated via [`openapi-generator-cli`](https://github.com/OpenAPITools/openapi-generator-cli), so you'll need Java 8 or Docker installed.
 
 ## 🧰 Usage
 
