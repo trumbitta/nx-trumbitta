@@ -69,7 +69,13 @@ async function generateSources(
       args.push('--global-property', globalProperties);
     }
 
+    logger.info(`[command]: ${command} ${args.join(' ')}`);
+
     const child = spawn(command, args);
+
+    child.stdout.on('data', (data) => {
+      logger.info(`[stdout]: ${data}`);
+    });
 
     child.on('error', (err) => {
       reject(err);
