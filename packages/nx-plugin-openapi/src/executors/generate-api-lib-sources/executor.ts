@@ -19,6 +19,7 @@ export default async function runExecutor(
 
   await generateSources(
     options.useDockerBuild ?? false,
+    options.dockerImage ?? 'openapitools/openapi-generator-cli:latest',
     options.sourceSpecPathOrUrl,
     options.sourceSpecUrlAuthorizationHeaders,
     options.generator,
@@ -33,6 +34,7 @@ export default async function runExecutor(
 
 async function generateSources(
   useDockerBuild: boolean,
+  dockerImage: string,
   apiSpecPathOrUrl: string,
   apiSpecAuthorizationHeaders: string,
   generator: string,
@@ -47,7 +49,7 @@ async function generateSources(
     const { command, args } = useDockerBuild
       ? {
           command: 'docker',
-          args: ['run', '--rm', '-v', `${process.cwd()}:/local`, '-w', '/local', 'openapitools/openapi-generator-cli'],
+          args: ['run', '--rm', '-v', `${process.cwd()}:/local`, '-w', '/local', dockerImage],
         }
       : { command: 'npx', args: ['openapi-generator-cli'] };
 

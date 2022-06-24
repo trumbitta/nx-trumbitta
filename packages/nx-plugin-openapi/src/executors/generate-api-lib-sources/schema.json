@@ -10,6 +10,11 @@
       "description": "Should the build occur inside of a docker container",
       "default": false
     },
+    "dockerImage": {
+      "type": "string",
+      "description": "Which docker image should be used for the build?",
+      "default": "openapitools/openapi-generator-cli:latest"
+    },
     "generator": {
       "type": "string",
       "description": "The OpenAPITools generator you want to use",
