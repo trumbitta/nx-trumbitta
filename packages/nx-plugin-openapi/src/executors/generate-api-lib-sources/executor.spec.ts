@@ -13,6 +13,7 @@ describe('Command Runner Builder', () => {
   let context: (dir: string) => ExecutorContext;
   let schema: GenerateApiLibSourcesExecutorSchema;
   let dockerSchema: GenerateApiLibSourcesExecutorSchema;
+  let dockerAltSchema: GenerateApiLibSourcesExecutorSchema;
 
   beforeEach(async () => {
     schema = {
@@ -21,6 +22,12 @@ describe('Command Runner Builder', () => {
     };
     dockerSchema = {
       generator: 'typescript-fetch',
+      sourceSpecPathOrUrl: 'open-api-spec.yml',
+      useDockerBuild: true,
+    };
+    dockerAltSchema = {
+      generator: 'typescript-fetch',
+      dockerImage: 'alt/openapi-generator-cli:not-the-latest',
       sourceSpecPathOrUrl: 'open-api-spec.yml',
       useDockerBuild: true,
     };
@@ -70,7 +77,7 @@ describe('Command Runner Builder', () => {
         '--rm',
         ...['-v', `${process.cwd()}:/local`],
         ...['-w', '/local'],
-        'openapitools/openapi-generator-cli',
+        'openapitools/openapi-generator-cli:latest',
         'generate',
         ...['-i', 'open-api-spec.yml'],
         ...['-g', 'typescript-fetch'],
@@ -79,6 +86,27 @@ describe('Command Runner Builder', () => {
       exitCode: 0,
     });
     const { success } = await executor(dockerSchema, context('docker'));
+    expect(success).toBe(true);
+    allSpawned();
+  });
+
+  it('can run in docker with alt image', async () => {
+    const allSpawned = mockSpawn({
+      command: 'docker',
+      args: [
+        'run',
+        '--rm',
+        ...['-v', `${process.cwd()}:/local`],
+        ...['-w', '/local'],
+        'alt/openapi-generator-cli:not-the-latest',
+        'generate',
+        ...['-i', 'open-api-spec.yml'],
+        ...['-g', 'typescript-fetch'],
+        ...['-o', './tmp/src/dockeralt'],
+      ],
+      exitCode: 0,
+    });
+    const { success } = await executor(dockerAltSchema, context('dockeralt'));
     expect(success).toBe(true);
     allSpawned();
   });

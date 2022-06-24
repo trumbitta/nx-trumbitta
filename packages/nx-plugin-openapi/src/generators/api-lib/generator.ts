@@ -1,11 +1,17 @@
 // Nrwl
 import {
-  addProjectConfiguration, formatFiles, generateFiles, GeneratorCallback,
+  addProjectConfiguration,
+  formatFiles,
+  generateFiles,
+  GeneratorCallback,
   getWorkspaceLayout,
-  joinPathFragments, names,
+  joinPathFragments,
+  names,
   offsetFromRoot,
   ProjectType,
-  readWorkspaceConfiguration, Tree, updateJson
+  readWorkspaceConfiguration,
+  Tree,
+  updateJson,
 } from '@nrwl/devkit';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 // Third Parties
@@ -15,9 +21,6 @@ import { GenerateApiLibSourcesExecutorSchema } from '../../executors/generate-ap
 import init from '../init/generator';
 // Schemas
 import { ApiLibGeneratorSchema } from './schema';
-
-
-
 
 const projectType: ProjectType = 'library';
 
@@ -82,6 +85,7 @@ function normalizeOptions(host: Tree, options: ApiLibGeneratorSchema): Normalize
 const getExecutorOptions = (options: NormalizedSchema): GenerateApiLibSourcesExecutorSchema => {
   const executorOptions: GenerateApiLibSourcesExecutorSchema = {
     useDockerBuild: options.useDockerBuild,
+    dockerImage: options.dockerImage,
     generator: options.generator,
     sourceSpecPathOrUrl: options.isRemoteSpec
       ? options.sourceSpecUrl

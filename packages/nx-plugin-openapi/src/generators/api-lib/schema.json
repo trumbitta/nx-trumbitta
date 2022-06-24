@@ -21,6 +21,12 @@
       "default": false,
       "x-prompt": "Should the build occur inside of a docker container?"
     },
+    "dockerImage": {
+      "type": "string",
+      "description": "Which docker image should be used for the build",
+      "default": "openapitools/openapi-generator-cli:latest",
+      "x-prompt": "Which docker image should be used for the build?"
+    },
     "generator": {
       "type": "string",
       "description": "The generator this lib will use to build an API SDK (e.g.: typescript-fetch)",
