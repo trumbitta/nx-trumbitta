@@ -34,6 +34,10 @@
     "sourceSpecUrlAuthorizationHeaders": {
       "type": "string",
       "description": "A URL-encoded string of name:header with a comma separating multiple values"
+    },
+    "templateDir": {
+      "type": "string",
+      "description": "The path (relative to the workspace root) where the template files for the generator are located at"
     }
   },
   "required": []

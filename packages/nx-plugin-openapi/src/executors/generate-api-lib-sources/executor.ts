@@ -25,6 +25,7 @@ export default async function runExecutor(
     options.additionalProperties,
     options.globalProperties,
     options.typeMappings,
+    options.templateDir,
     outputDir,
   );
 
@@ -39,6 +40,7 @@ async function generateSources(
   additionalProperties: string,
   globalProperties: string,
   typeMappings: string,
+  templateDir: string,
   outputDir: string,
 ): Promise<number> {
   mkdirSync(outputDir, { recursive: true });
@@ -67,6 +69,10 @@ async function generateSources(
 
     if (globalProperties) {
       args.push('--global-property', globalProperties);
+    }
+
+    if (templateDir) {
+      args.push('--template-dir', templateDir);
     }
 
     const child = spawn(command, args);
