@@ -1,7 +1,9 @@
 import { spawn } from 'child_process';
 import EventEmitter from 'events';
 
-export function mockSpawn(...invocations: { command: string; args: string[]; stdout?: string; exitCode: number }[]) {
+export function mockSpawn(
+  ...invocations: { command: string; args: string[]; stdout?: string; stderr?: string; exitCode: number }[]
+) {
   const mock = spawn as jest.Mock;
   for (const invocation of invocations) {
     mock.mockImplementationOnce((command: string, args: string[]) => {
@@ -16,6 +18,10 @@ export function mockSpawn(...invocations: { command: string; args: string[]; std
 
       if (invocation.stdout) {
         mockEmit(child.stdout, 'data', Buffer.from(invocation.stdout));
+      }
+
+      if (invocation.stderr) {
+        mockEmit(child.stderr, 'data', Buffer.from(invocation.stderr));
       }
 
       mockEmit(child, 'exit', invocation.exitCode ?? 0);
