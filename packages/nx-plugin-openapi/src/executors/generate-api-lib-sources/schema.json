@@ -34,6 +34,11 @@
     "sourceSpecUrlAuthorizationHeaders": {
       "type": "string",
       "description": "A URL-encoded string of name:header with a comma separating multiple values"
+    },
+    "silent": {
+      "type": "boolean",
+      "description": "Whether or not to suppress generator output",
+      "default": false
     }
   },
   "required": []
