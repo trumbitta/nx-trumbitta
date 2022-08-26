@@ -1,8 +1,8 @@
 jest.mock('child_process');
 jest.mock('@nrwl/devkit');
 
-import { logger } from '@nrwl/devkit';
-import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
+import { ExecutorContext, logger } from '@nrwl/devkit';
+
 import { mockSpawn } from '../../test/mockSpawn';
 import executor from './executor';
 import { GenerateApiLibSourcesExecutorSchema } from './schema';

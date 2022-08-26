@@ -1,5 +1,4 @@
 {
-  "root": "packages/open-in-gitpod",
   "sourceRoot": "packages/open-in-gitpod/src",
   "projectType": "library",
   "targets": {
@@ -14,12 +13,12 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/open-in-gitpod"],
       "options": {
-        "jestConfig": "packages/open-in-gitpod/jest.config.js",
+        "jestConfig": "packages/open-in-gitpod/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/open-in-gitpod",
