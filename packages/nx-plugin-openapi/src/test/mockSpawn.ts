@@ -6,21 +6,23 @@ export function mockSpawn(
 ) {
   const mock = spawn as jest.Mock;
   for (const invocation of invocations) {
-    mock.mockImplementationOnce((command: string, args: string[]) => {
+    mock.mockImplementationOnce((command: string, args: string[], options: { stdio: 'ignore' | 'pipe' }) => {
       expect([command, ...args]).toEqual([invocation.command, ...invocation.args]);
 
       const child: any = new EventEmitter();
       child.stdin = new EventEmitter();
       child.stdin.write = jest.fn();
       child.stdin.end = jest.fn();
-      child.stdout = new EventEmitter();
-      child.stderr = new EventEmitter();
+      if (options.stdio !== 'ignore') {
+        child.stdout = new EventEmitter();
+        child.stderr = new EventEmitter();
+      }
 
-      if (invocation.stdout) {
+      if (child.stdout && invocation.stdout) {
         mockEmit(child.stdout, 'data', Buffer.from(invocation.stdout));
       }
 
-      if (invocation.stderr) {
+      if (child.stderr && invocation.stderr) {
         mockEmit(child.stderr, 'data', Buffer.from(invocation.stderr));
       }
 

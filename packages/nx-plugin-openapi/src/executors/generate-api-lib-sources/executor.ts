@@ -75,11 +75,11 @@ async function generateSources(
 
     const child = spawn(command, args, { stdio: silent ? 'ignore' : 'pipe' });
 
-    child.stdout.on('data', (data) => {
+    child.stdout?.on('data', (data) => {
       logger.info(`[stdout]: ${data}`);
     });
 
-    child.stderr.on('data', (data) => {
+    child.stderr?.on('data', (data) => {
       logger.error(`[stderr]: ${data}`);
     });
 
