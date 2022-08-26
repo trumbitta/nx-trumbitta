@@ -3,8 +3,8 @@
 tasks:
   - before: |
       nvm install
-      npm i -g nx commitizen
   - init: |
+      npm i -g nx commitizen
       npm i
 
 github:
