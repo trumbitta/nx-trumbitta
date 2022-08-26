@@ -25,6 +25,7 @@ export default async function runExecutor(
     options.additionalProperties,
     options.globalProperties,
     options.typeMappings,
+    options.silent,
     outputDir,
   );
 
@@ -39,6 +40,7 @@ async function generateSources(
   additionalProperties: string,
   globalProperties: string,
   typeMappings: string,
+  silent: boolean,
   outputDir: string,
 ): Promise<number> {
   mkdirSync(outputDir, { recursive: true });
@@ -69,7 +71,17 @@ async function generateSources(
       args.push('--global-property', globalProperties);
     }
 
-    const child = spawn(command, args);
+    logger.info(`[command]: ${command} ${args.join(' ')}`);
+
+    const child = spawn(command, args, { stdio: silent ? 'ignore' : 'pipe' });
+
+    child.stdout.on('data', (data) => {
+      logger.info(`[stdout]: ${data}`);
+    });
+
+    child.stderr.on('data', (data) => {
+      logger.error(`[stderr]: ${data}`);
+    });
 
     child.on('error', (err) => {
       reject(err);
