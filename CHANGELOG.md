@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.11.0...v1.12.0) (2022-08-26)
+
+
+### Features
+
+* **nx-plugin-openapi:** add stderr logger and silent option ([58bde94](https://github.com/trumbitta/nx-trumbitta/commit/58bde94fa3ceecf728b7ec89e08da72cc598f14c)), closes [#70](https://github.com/trumbitta/nx-trumbitta/issues/70) [#67](https://github.com/trumbitta/nx-trumbitta/issues/67)
+
 ## [1.11.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.10.1...v1.11.0) (2022-06-15)
 
 
