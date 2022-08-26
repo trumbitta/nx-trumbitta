@@ -1,6 +1,8 @@
 jest.mock('child_process');
 jest.mock('@nrwl/devkit');
 
+import { userInfo } from 'os';
+
 import { ExecutorContext, logger } from '@nrwl/devkit';
 
 import { mockSpawn } from '../../test/mockSpawn';
@@ -71,6 +73,8 @@ describe('Command Runner Builder', () => {
       command: 'docker',
       args: [
         'run',
+        '-u',
+        `${userInfo().uid}`,
         '--rm',
         ...['-v', `${process.cwd()}:/local`],
         ...['-w', '/local'],
