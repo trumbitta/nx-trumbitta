@@ -1,17 +1,11 @@
-image:
-  file: .gitpod.Dockerfile
-
+---
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: |
+  - before: |
       nvm install
+  - init: |
       npm i -g nx commitizen
       npm i
-
-# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
-ports:
-  - port: 3000
-    onOpen: open-preview
 
 github:
   prebuilds:
@@ -25,3 +19,5 @@ vscode:
     - '42crunch.vscode-openapi'
     - 'redhat.vscode-yaml'
     - 'dbaeumer.vscode-eslint'
+    - nrwl.angular-console
+    - EditorConfig.EditorConfig
