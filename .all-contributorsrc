@@ -41,7 +41,17 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/7578483?v=4",
       "profile": "https://github.com/youngchen7",
       "contributions": [
-        "code"
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "iceteabottle",
+      "name": "Florian Symanowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13260952?v=4",
+      "profile": "https://www.ewerk.com/",
+      "contributions": [
+        "bug"
       ]
     },
     {
