@@ -1,3 +1,10 @@
+### [1.12.1](https://github.com/trumbitta/nx-trumbitta/compare/v1.12.0...v1.12.1) (2022-08-28)
+
+
+### Bug Fixes
+
+* **nx-plugin-openapi:** fix silent option generation ([7540122](https://github.com/trumbitta/nx-trumbitta/commit/7540122683d4af499231f590b6bffc491586c8ef))
+
 ## [1.12.0](https://github.com/trumbitta/nx-trumbitta/compare/v1.11.0...v1.12.0) (2022-08-26)
 
 
