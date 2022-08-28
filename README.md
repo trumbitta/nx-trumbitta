@@ -6,7 +6,7 @@
 ![CI](https://github.com/trumbitta/nx-trumbitta/workflows/CI/badge.svg?event=push)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## 🧐 What is it?
@@ -33,6 +33,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/fmmenchi"><img src="https://avatars.githubusercontent.com/u/12685345?v=4?s=100" width="100px;" alt=""/><br /><sub><b>fmmenchi</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/commits?author=fmmenchi" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/djbreen7"><img src="https://avatars.githubusercontent.com/u/13296622?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/commits?author=djbreen7" title="Code">💻</a> <a href="https://github.com/trumbitta/nx-trumbitta/issues?q=author%3Adjbreen7" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://joeflateau.net"><img src="https://avatars.githubusercontent.com/u/643331?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joe Flateau</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/issues?q=author%3Ajoeflateau" title="Bug reports">🐛</a> <a href="https://github.com/trumbitta/nx-trumbitta/commits?author=joeflateau" title="Code">💻</a> <a href="https://github.com/trumbitta/nx-trumbitta/commits?author=joeflateau" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.ewerk.com/"><img src="https://avatars.githubusercontent.com/u/13260952?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Florian Symanowski</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/issues?q=author%3Aiceteabottle" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/youngchen7"><img src="https://avatars.githubusercontent.com/u/7578483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>youngchen7</b></sub></a><br /><a href="https://github.com/trumbitta/nx-trumbitta/commits?author=youngchen7" title="Code">💻</a> <a href="https://github.com/trumbitta/nx-trumbitta/issues?q=author%3Ayoungchen7" title="Bug reports">🐛</a></td>
   </tr>
 </table>
