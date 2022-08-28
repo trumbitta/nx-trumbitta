@@ -43,6 +43,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "JulioC",
+      "name": "Júlio César",
+      "avatar_url": "https://avatars.githubusercontent.com/u/387794?v=4",
+      "profile": "http://julioc.me",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
