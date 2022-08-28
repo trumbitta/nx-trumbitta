@@ -122,10 +122,10 @@ describe('Command Runner Builder', () => {
       stderr: 'stderr content',
       exitCode: 0,
     });
-    expect(logger.info).not.toHaveBeenLastCalledWith(expect.stringContaining('stdout content'));
-    expect(logger.error).not.toHaveBeenLastCalledWith(expect.stringContaining('stderr content'));
     const { success } = await executor({ ...schema, silent: true }, context('local'));
     expect(success).toBe(true);
+    expect(logger.info).not.toHaveBeenLastCalledWith(expect.stringContaining('stdout content'));
+    expect(logger.error).not.toHaveBeenLastCalledWith(expect.stringContaining('stderr content'));
     allSpawned();
   });
 });
