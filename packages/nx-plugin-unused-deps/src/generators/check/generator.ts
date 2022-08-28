@@ -2,9 +2,10 @@
 
 import { logger, readJson, removeDependenciesFromPackageJson, Tree, writeJsonFile } from '@nrwl/devkit';
 import { createProjectGraphAsync } from '@nrwl/workspace/src/core/project-graph';
-import { PackageJsonDeps } from './package-json-deps.model';
+
 // Models
 import { CheckGeneratorSchema } from './schema';
+import { PackageJsonDeps } from './package-json-deps.model';
 
 interface PackageRecord {
   [key: string]: number;

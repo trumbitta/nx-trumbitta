@@ -126,7 +126,7 @@ function createFiles(host: Tree, options: NormalizedSchema) {
 }
 
 function updateTsConfig(host: Tree, options: NormalizedSchema): void {
-  updateJson(host, 'tsconfig.base.json', (json) => {
+    updateJson(host, 'tsconfig.base.json', (json) => {
     const compilerOptions = json.compilerOptions;
     compilerOptions.paths = compilerOptions.paths || {};
     delete compilerOptions.paths[options.name];

@@ -1,5 +1,4 @@
 {
-  "root": "packages/nx-plugin-unused-deps",
   "sourceRoot": "packages/nx-plugin-unused-deps/src",
   "projectType": "library",
   "targets": {
@@ -14,12 +13,12 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/nx-plugin-unused-deps"],
       "options": {
-        "jestConfig": "packages/nx-plugin-unused-deps/jest.config.js",
+        "jestConfig": "packages/nx-plugin-unused-deps/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/nx-plugin-unused-deps",

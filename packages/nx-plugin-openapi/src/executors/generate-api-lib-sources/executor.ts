@@ -1,6 +1,10 @@
-import { ExecutorContext, logger } from '@nrwl/devkit';
 import { spawn } from 'cross-spawn';
 import { mkdirSync } from 'fs';
+import { userInfo } from 'os';
+
+// Nrwl
+import { ExecutorContext, logger } from '@nrwl/devkit';
+
 import { deleteOutputDir } from '../../utils/delete-output-dir';
 import { GenerateApiLibSourcesExecutorSchema } from './schema';
 
@@ -49,7 +53,17 @@ async function generateSources(
     const { command, args } = useDockerBuild
       ? {
           command: 'docker',
-          args: ['run', '--rm', '-v', `${process.cwd()}:/local`, '-w', '/local', 'openapitools/openapi-generator-cli'],
+          args: [
+            'run',
+            '-u',
+            `${userInfo().uid}`,
+            '--rm',
+            '-v',
+            `${process.cwd()}:/local`,
+            '-w',
+            '/local',
+            'openapitools/openapi-generator-cli',
+          ],
         }
       : { command: 'npx', args: ['openapi-generator-cli'] };
 
