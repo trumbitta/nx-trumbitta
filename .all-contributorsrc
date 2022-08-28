@@ -43,6 +43,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "iceteabottle",
+      "name": "Florian Symanowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13260952?v=4",
+      "profile": "https://www.ewerk.com/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
