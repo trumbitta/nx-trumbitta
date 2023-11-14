@@ -85,6 +85,12 @@
       "x-prompt": "Do you want to specify any global properties for the generator? key1=value1,key2=value2 (https://openapi-generator.tech/docs/globals)",
       "default": ""
     },
+    "templateDir": {
+      "type": "string",
+      "description": "The path (relative to the workspace root) to the folder containing your custom templates",
+      "x-prompt": "If you want to use custom templates, what's the path of the folder that contains these files?",
+      "default": ""
+    },
     "skipFormat": {
       "description": "Skip formatting files.",
       "type": "boolean",

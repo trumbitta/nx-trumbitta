@@ -7,4 +7,5 @@ export interface GenerateApiLibSourcesExecutorSchema {
   globalProperties?: string;
   typeMappings?: string;
   silent?: boolean;
+  templateDir?: string;
 }

@@ -1,11 +1,17 @@
 // Nrwl
 import {
-  addProjectConfiguration, formatFiles, generateFiles, GeneratorCallback,
+  addProjectConfiguration,
+  formatFiles,
+  generateFiles,
+  GeneratorCallback,
   getWorkspaceLayout,
-  joinPathFragments, names,
+  joinPathFragments,
+  names,
   offsetFromRoot,
   ProjectType,
-  readWorkspaceConfiguration, Tree, updateJson
+  readWorkspaceConfiguration,
+  Tree,
+  updateJson,
 } from '@nrwl/devkit';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 // Third Parties
@@ -15,9 +21,6 @@ import { GenerateApiLibSourcesExecutorSchema } from '../../executors/generate-ap
 import init from '../init/generator';
 // Schemas
 import { ApiLibGeneratorSchema } from './schema';
-
-
-
 
 const projectType: ProjectType = 'library';
 
@@ -88,6 +91,7 @@ const getExecutorOptions = (options: NormalizedSchema): GenerateApiLibSourcesExe
       : [options.projectRootApiSpecLib, options.sourceSpecFileRelativePath].join('/'),
     additionalProperties: options.additionalProperties,
     globalProperties: options.globalProperties,
+    templateDir: options.templateDir,
   };
 
   if (options.isRemoteSpec && options.sourceSpecUrlAuthorizationHeaders) {

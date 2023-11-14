@@ -39,6 +39,10 @@
       "type": "boolean",
       "description": "Whether or not to suppress generator output",
       "default": false
+    },
+    "templateDir": {
+      "type": "string",
+      "description": "The path (relative to the workspace root) to folder containing the template files"
     }
   },
   "required": []
