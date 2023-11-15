@@ -12,5 +12,6 @@ export interface ApiLibGeneratorSchema {
   sourceSpecFileRelativePath?: string;
   additionalProperties?: string;
   globalProperties?: string;
+  templateDir?: string;
   skipFormat?: boolean;
 }
