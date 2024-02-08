@@ -5,6 +5,11 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trumbitta/nx-trumbitta",
+    "directory": "packages/nx-plugin-openapi"
+  },
   "peerDependencies": {
     "@nrwl/workspace": ">=13.0.0"
   },
